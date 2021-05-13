@@ -10,6 +10,7 @@ import { AnimalesComponent } from './animales/animales.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { TaquillaComponent } from './taquilla/taquilla.component';
 import { ReportesComponent } from './reportes/reportes.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ReportesComponent } from './reportes/reportes.component';
     AnimalesComponent,
     UsuariosComponent,
     TaquillaComponent,
-    ReportesComponent
+    ReportesComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
