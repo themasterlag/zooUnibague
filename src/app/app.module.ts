@@ -11,6 +11,9 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { TaquillaComponent } from './taquilla/taquilla.component';
 import { ReportesComponent } from './reportes/reportes.component';
 import { LoginComponent } from './login/login.component';
+import { RegistroAnimalesComponent } from './animales/registro-animales/registro-animales.component';
+import { ListarAnimalesComponent } from './animales/listar-animales/listar-animales.component';
+import { EliminarAnimalesComponent } from './animales/eliminar-animales/eliminar-animales.component';
 
 
 @NgModule({
@@ -21,7 +24,10 @@ import { LoginComponent } from './login/login.component';
     UsuariosComponent,
     TaquillaComponent,
     ReportesComponent,
-    LoginComponent
+    LoginComponent,
+    RegistroAnimalesComponent,
+    ListarAnimalesComponent,
+    EliminarAnimalesComponent
   ],
   imports: [
     BrowserModule,
