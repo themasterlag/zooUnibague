@@ -16,6 +16,10 @@ import { ListarAnimalesComponent } from './animales/listar-animales/listar-anima
 import { EliminarAnimalesComponent } from './animales/eliminar-animales/eliminar-animales.component';
 import { RegistrarPersonasComponent } from './usuarios/registrar-personas/registrar-personas.component';
 import { RegistrarPersonascrearRolComponent } from './usuarios/registrar-personascrear-rol/registrar-personascrear-rol.component';
+import { CrearRolesComponent } from './usuarios/crear-roles/crear-roles.component';
+import { CrearUsuarioComponent } from './usuarios/crear-usuario/crear-usuario.component';
+import { ModificarUsuarioComponent } from './usuarios/modificar-usuario/modificar-usuario.component';
+import { AsignarRolComponent } from './usuarios/asignar-rol/asignar-rol.component';
 
 
 @NgModule({
@@ -31,7 +35,11 @@ import { RegistrarPersonascrearRolComponent } from './usuarios/registrar-persona
     ListarAnimalesComponent,
     EliminarAnimalesComponent,
     RegistrarPersonasComponent,
-    RegistrarPersonascrearRolComponent
+    RegistrarPersonascrearRolComponent,
+    CrearRolesComponent,
+    CrearUsuarioComponent,
+    ModificarUsuarioComponent,
+    AsignarRolComponent
   ],
   imports: [
     BrowserModule,
