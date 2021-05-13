@@ -5,11 +5,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { HabitatsComponent } from './habitats/habitats.component';
+import { AnimalesComponent } from './animales/animales.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+import { TaquillaComponent } from './taquilla/taquilla.component';
+import { ReportesComponent } from './reportes/reportes.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HabitatsComponent,
+    AnimalesComponent,
+    UsuariosComponent,
+    TaquillaComponent,
+    ReportesComponent
   ],
   imports: [
     BrowserModule,
