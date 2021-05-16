@@ -16,6 +16,14 @@ import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
 import { VentaComponent } from './taquilla/venta/venta.component';
 import { DevolucionComponent } from './taquilla/devolucion/devolucion.component';
+import { RegistroAnimalesComponent } from './animales/registro-animales/registro-animales.component';
+import { ListarAnimalesComponent } from './animales/listar-animales/listar-animales.component';
+import { EliminarAnimalesComponent } from './animales/eliminar-animales/eliminar-animales.component';
+import { RegistrarPersonasComponent } from './usuarios/registrar-personas/registrar-personas.component';
+import { CrearRolesComponent } from './usuarios/crear-roles/crear-roles.component';
+import { CrearUsuarioComponent } from './usuarios/crear-usuario/crear-usuario.component';
+import { ModificarUsuarioComponent } from './usuarios/modificar-usuario/modificar-usuario.component';
+import { AsignarRolComponent } from './usuarios/asignar-rol/asignar-rol.component';
 
 
 @NgModule({
@@ -29,7 +37,15 @@ import { DevolucionComponent } from './taquilla/devolucion/devolucion.component'
     LoginComponent,
     MenuComponent,
     VentaComponent,
-    DevolucionComponent
+    DevolucionComponent,
+    RegistroAnimalesComponent,
+    ListarAnimalesComponent,
+    EliminarAnimalesComponent,
+    RegistrarPersonasComponent,
+    CrearRolesComponent,
+    CrearUsuarioComponent,
+    ModificarUsuarioComponent,
+    AsignarRolComponent
   ],
   imports: [
     BrowserModule,
