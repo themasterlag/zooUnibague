@@ -1,72 +1,62 @@
 <nav>
     <link rel="stylesheet" href="usuarios.component.css">
-    <div class="cotainer">
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card border-primary mb-3">
                     <div class="card-header alert alert-info text-center">
                         <font size=6>Usuario</font>
                     </div>
-                    <div class="col-12">
+                    <div class="col-md">
                         <label for="inputAddress" class="form-label">Tipo de usuario</label>
-                        <input type="text" class="form-control" id="inputAddress" placeholder="">
+                        <input type="text" class="form-control" id="inputAddress" placeholder="" style="width : 50%">
                     </div>
                     <br>
-                    <div class="col-12">
+                    <div class="col-md">
                         <label for="inputAddress" class="form-label">Nombre de usuario</label>
-                        <input type="text" class="form-control" id="inputAddress" placeholder="">
+                        <input type="text" class="form-control" id="inputAddress" placeholder="" style="width : 50%">
                     </div>
                     <br>
-                    <div class="col">
+                    <div class="col-md">
                         <label for="inputState" class="form-label">Rol</label>
-                        <select id="inputState" class="form-select">
+                        <select id="inputState" class="form-select" style="width : 50%">
                             <option selected>Elegir...</option>
                             <option>Visitante</option>
                             <option>Veterinario</option>
                             <option>Taquillero</option>
                             <option>Guia</option>
                             <option>Cuidador de animales</option>
-
                         </select>
-
-                        <br>
-                        <fieldset class="row mb-3">
-                            <legend class="col-form-label col-sm-2 pt-0">Persona exclusiva</legend>
-                            <div class="col-sm-10">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio1" value="option1">
-                                    <label class="form-check-label" for="inlineRadio1">Si</label>
+                        <div class="move-2">
+                            <fieldset class="row mb-3">
+                                <legend class="col-form-label col-xs-2 pt-0"><br>Persona exclusiva</legend>
+                                <div class="col-sm-10">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                            id="inlineRadio1" value="option1">
+                                        <label class="form-check-label" for="inlineRadio1">Si</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                            id="inlineRadio2" value="option2">
+                                        <label class="form-check-label" for="inlineRadio2">No</label>
+                                    </div>
                                 </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">No</label>
+                                <div class="col-12"><br>
+                                    <button type="submit" class="btn btn-primary"
+                                        style="margin-left: 280px">Agregar</button>
+
+                                    <button type="submit" class="btn btn-primary"
+                                        style="margin-left: 100px">Buscar</button>
+
+                                    <button type="submit" class="btn btn-primary"
+                                        style="margin-left: 100px">Eliminar</button>
                                 </div>
-                            </div>
-                            <br>
-                            <br>
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary"
-                                    style="margin-left: 280px">Agregar</button>
-
-                                <button type="submit" class="btn btn-primary" style="margin-left: 100px">Buscar</button>
-
-                                <button type="submit" class="btn btn-primary"
-                                    style="margin-left: 100px">Eliminar</button>
-                            </div>
-                        
-                        </fieldset>
+                            </fieldset>
+                        </div>
                     </div>
-                   
-
-
                 </div>
-
             </div>
         </div>
-
     </div>
-    
-
 </nav>
