@@ -4,7 +4,8 @@ import { VentaComponent } from "src/app/taquilla/venta/venta.component";
 import { DevolucionComponent } from "src/app/taquilla/devolucion/devolucion.component";
 import { LoginComponent } from './login/login.component';
 import {UsuariosComponent} from 'src/app/usuarios/usuarios.component';
-import { AnimalesComponent} from './animales/animales.component'
+import { AnimalesComponent} from './animales/animales.component';
+import { RegistrarPersonasComponent } from './usuarios/registrar-personas/registrar-personas.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'devolucion', component: DevolucionComponent },
   { path: 'login', component: LoginComponent },
   { path: 'usuarios', component: UsuariosComponent },
-  { path: 'animales', component: AnimalesComponent }
+  { path: 'animales', component: AnimalesComponent },
+  {path: 'registrar-personas', component: RegistrarPersonasComponent}
 ];
 
 @NgModule({

@@ -1,0 +1,120 @@
+.divider-text {
+    position: relative;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.divider-text span {
+    padding: 7px;
+    font-size: 12px;
+    position: relative;   
+    z-index: 2;
+}
+.divider-text:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    top: 55%;
+    left: 0;
+    z-index: 1;
+}
+
+.btn-facebook {
+    background-color: #405D9D;
+    color: #fff;
+}
+.btn-twitter {
+    background-color: #42AEEC;
+    color: #fff;
+}
+
+
+
+
+body{
+    font-family: 'Open Sans', sans-serif;}
+
+.container{
+    padding:0 100px;}
+    
+#terms{
+    padding-top:80px;
+    padding-bottom:80px;}
+
+#terms h2{
+    font-size:42px;
+    font-style:normal;
+    font-weight:300;
+    color:#057d9f;
+    line-height:48px;
+    text-align: center;}
+
+#terms h3{
+    font-size:24px;
+    font-style:normal;
+    font-weight:300;
+    color:#057d9f;
+    text-align: center;
+    line-height:40px;}
+    
+.op-text-block{
+    text-align: left;
+    line-height:1.6em;
+    font-weight:300;}
+    
+
+    
+.element-container{
+    margin-bottom:50px;}
+    
+.image-caption{
+    width:250px;
+    margin:0px auto;}
+    
+.testimonial-block p{
+    font-family: Georgia,Times,serif;
+    font-style: italic;
+    margin: 20px 0;
+    color: #8a8a8a;
+    width: auto;
+    font-size: 14px;
+    line-height: 1.5em;}
+    
+.testimonial{
+    font-size:14px;
+    padding:0px 20px;
+    margin-bottom:60px;}
+    
+.hr-2{
+    margin:100px 0px;}
+    
+.element-container h2{
+    font-size:36px;
+    font-weight:300;
+    color:#057d9f;
+    text-align: center;
+    padding:0px;}
+
+.element-container h3{
+    font-size:24px;
+    font-weight:300;
+    color:#057d9f;
+    text-align: center;
+    padding:0px;}
+    
+/*-----------------------------*/
+
+.elements-right h3{
+    font-size:24px;
+    color:#057d9f;
+    font-weight:lighter;
+    margin-top:0px;
+    margin-bottom:30px;}
+    
+.op-text-block h3{
+    font-size:24px;
+    color:#057d9f;
+    font-weight:lighter;
+    margin-top:20px;
+    margin-bottom:20px;}
