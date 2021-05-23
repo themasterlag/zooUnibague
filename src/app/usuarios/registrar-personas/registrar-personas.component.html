@@ -3,111 +3,107 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 <link rel="stylesheet" href="registrar-personas.component.css">
-
-<div class="container">
-    <br>
-    <p class="text-center">More bootstrap 4 components on <a href="#">
-            Bootstrap-ecommerce.com</a></p>
-    <hr>
-    <div class="card bg-light">
-        <article class="card-body mx-auto" style="max-width: 400px;">
-            <h4 class="card-title mt-3 text-center">Create Account</h4>
-            <p class="text-center">Get started with your free account</p>
-            <p>
-                <a class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>
-                <a class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via
-                    facebook</a>
-            </p>
-            <p class="divider-text">
-                <span class="bg-light">OR</span>
-            </p>
-            <form>
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+<div style="background-image: url(https://wallup.net/wp-content/uploads/2017/03/28/423306-Australia-nature-animals-kangaroos-sunset-silhouette.jpg); background-size: 100%;">
+    <div class="container" >
+        <br>
+        <p class="text-center">Bienvenidos a la página de registro</p>
+        <hr>
+        <div class="card bg-light">
+            <article class="card-body mx-auto" style="max-width: 400px;">
+                <h4 class="card-title mt-3 text-center">Crear usuario</h4>
+                <p class="text-center">Inicia con tu cuenta gratis</p>
+                <p>
+                    <a class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>Login via Twitter</a>
+                    <a class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via
+                        facebook</a>
+                </p>
+                <p class="divider-text">
+                    <span class="bg-light">OR</span>
+                </p>
+                <form style="width: 20cm; transform: translateX(-5cm);">
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                        </div>
+                        <input name="" class="form-control" placeholder="nombre" type="text" [(ngModel)]="nombre">
                     </div>
-                    <input name="" class="form-control" placeholder="nombre" type="text">
-                </div>
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                        </div>
+                        <input name="" class="form-control" placeholder="apellido" type="text" [(ngModel)]="apellido">
                     </div>
-                    <input name="" class="form-control" placeholder="apellido" type="text">
-                </div>
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fas fa-sort"></i></span>
+                        </div>
+                        <input name="" class="form-control" placeholder="edad" type="number" [(ngModel)]="edad">
                     </div>
-                    <input name="" class="form-control" placeholder="edad" type="number">
-                </div>
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-birthday-cake"></i></span>
+                        </div>
+                        <input name="" class="form-control" placeholder="fecha de nacimiento" type="text"
+                            [(ngModel)]="fechaDeNacimiento">
                     </div>
-                    <input name="" class="form-control" placeholder="fecha de nacimiento" type="datetime">
-                </div>
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    <label>Genero </label>
+                    <div class="form-group input-group">
+                        <select id="inputState" class="form-select" [(ngModel)]="genero"><i class="fas fa-venus-mars"></i>
+                            <option selected disabled>Elegir...</option>
+                            <option>Femenino</option>
+                            <option>Masculino</option>
+                        </select>
                     </div>
-                    <input name="" class="form-control" placeholder="genero" type="text">
-                    <select>
-                        <option selected disabled>Elegir...</option>
-                        <option>Femenino</option>
-                        <option>Masculino</option>                        
-                    </select>
-                </div>
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user-edit"></i></span>
+                        </div>
+                        <input name="" class="form-control" placeholder="nombre de usuario" type="text"
+                            [(ngModel)]="usuario">
                     </div>
-                    <input name="" class="form-control" placeholder="nombre de usuario" type="datetime">
-                </div>
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-money-check"></i></span>
+                        </div>
+                        <input name="" class="form-control" placeholder="identificación" type="number" [(ngModel)]="cedula">
                     </div>
-                    <input name="" class="form-control" placeholder="identificación" type="text">
-                </div>
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                        </div>
+                        <input name="" class="form-control" placeholder="numero de telefono" type="number"
+                            [(ngModel)]="telefono">
                     </div>
-                    <select class="custom-select" style="max-width: 120px;">
-                        <option selected="">+57</option>
-                        <option value="1">+58</option>
-                        <option value="2">+51</option>
-                        <option value="3">+54</option>
-                        <option value="4">Otro...</option>
-                    </select>
-                    <input name="" class="form-control" placeholder="numero de telefono" type="number">
-                </div> 
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                        </div>
+                        <input name="" class="form-control" placeholder="correo electronico" type="text"
+                            [(ngModel)]="email">
                     </div>
-                    <input name="" class="form-control" placeholder="correo electronico" type="email">
-                </div> 
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                        </div>
+                        <input class="form-control" placeholder="Create password" type="password" [(ngModel)]="contrasena">
                     </div>
-                    <input class="form-control" placeholder="Create password" type="password">
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block"> Create Account </button>
-                </div>
-                <p class="text-center">Ya tienes una cuenta? <a routerLink="/login">Log in</a> </p>
-            </form>
-        </article>
-    </div> 
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block" (click)="insertarPersonas()"> Create
+                            Account </button>
+                    </div>
+                    <p class="text-center">Ya tienes una cuenta? <a routerLink="/login">Log in</a> </p>
+                </form>
+            </article>
+        </div>
+    </div>
 </div>
-<br><br>
 <article class="bg-secondary mb-3">
     <div class="card-body text-center">
         <h3 class="text-white mt-3">Recuerda</h3>
-        <p class="h5 text-white">Al darle al boton de registrarte, estás aceptando nuestros términos y condiciones</p> <br>
-        <p><a class="btn btn-warning" href="terminos-condiciones.component.html" target="_blank"> Términos y condiciones
+        <p class="h5 text-white">Al darle al boton de registrarte, estás aceptando nuestros términos y condiciones</p>
+        <br>
+        <p><a class="btn btn-warning" href="https://zooguadalajara.com.mx/terminos-y-condiciones" target="_blank">
+                Términos y condiciones
                 <i class="fa fa-window-restore "></i></a></p>
     </div>
     <br><br>

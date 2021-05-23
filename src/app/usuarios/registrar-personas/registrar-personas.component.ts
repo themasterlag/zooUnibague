@@ -13,9 +13,9 @@ export class RegistrarPersonasComponent
   nombre: String;
   apellido: String;
   edad: number;
-  fechaDeNacimiento: Date;
+  fechaDeNacimiento:String;
   genero: String;
-  cedula: String;
+  cedula: number;
   telefono: number;
   usuario: String;
   contrasena: String;
@@ -27,9 +27,9 @@ export class RegistrarPersonasComponent
     this.nombre = "";
     this.apellido = "";
     this.edad = 0;
-    this.fechaDeNacimiento = new Date();
+    this.fechaDeNacimiento ="" ;
+    this.cedula = 0;
     this.genero = "";
-    this.cedula = "";
     this.telefono = 0;
     this.usuario = "";
     this.contrasena = "";
@@ -40,7 +40,7 @@ export class RegistrarPersonasComponent
   insertarPersonas() 
   {
     var tipo = "insert";
-    var sql = "insert into persona(nombre,apellido,edad,fechaNacimiento,id,genero,telefono,usuario,pwd,email) values('" + this.nombre + "','" + this.apellido + "'," + this.edad + "," + this.fechaDeNacimiento + "," + this.cedula + ",'" + this.genero + "'," + this.telefono + ",'" + this.usuario + "','" + this.contrasena + "','" + this.email + "');";
+    var sql = "INSERT INTO persona(nombre,apellido,edad,fechaNacimiento,id,genero,telefono,usuario,pwd,email) VALUES('" + this.nombre + "','" + this.apellido + "'," + this.edad + ",'" + this.fechaDeNacimiento + "'," + this.cedula + ",'" + this.genero + "'," + this.telefono + ",'" + this.usuario + "','" + this.contrasena + "','" + this.email + "');";
     this.zooService.llamadoHttp(tipo, sql).subscribe((data: any) => 
     {
       console.log(data);
