@@ -25,7 +25,7 @@ export class LoginComponent
  onLogin() 
   {
     var tipo = "select";
-    var sql = "select * from login where contraseña='" + this.contrasena+"';";
+    var sql = "select * from registro where pwd='" + this.contrasena+"';";
     this.zooService.llamadoHttp(tipo, sql).subscribe((data: any) => 
     {
       console.log(data);
