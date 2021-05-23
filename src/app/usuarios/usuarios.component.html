@@ -1,4 +1,5 @@
 <nav>
+    <body background="fondo.jpg"></body>
     <link rel="stylesheet" href="usuarios.component.css">
     <div class="container">
         <div class="row justify-content-center">
@@ -45,13 +46,13 @@
 
                                 <div class="col-12"><br>
                                     <button type="submit" class="btn btn-primary" style="margin-left: 270px"
-                                        (click)="llamadoRol()">Agregar</button>
+                                        (click)="insertarUsuario()">Agregar</button>
 
                                     <button type="submit" class="btn btn-primary"
-                                        style="margin-left: 100px">Buscar</button>
+                                        style="margin-left: 100px"(click)="buscarUsuario()">Buscar</button>
 
                                     <button type="submit" class="btn btn-primary"
-                                        style="margin-left: 100px">Eliminar</button>
+                                        style="margin-left: 100px"(click)="eliminarUsuario()">Eliminar</button>
                                 </div>
                             </fieldset>
                         </div>
@@ -60,4 +61,5 @@
             </div>
         </div>
     </div>
+</body>
 </nav>
