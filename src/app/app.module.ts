@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HabitatsComponent } from './habitats/habitats.component';
 import { AnimalesComponent } from './animales/animales.component';
@@ -23,7 +23,7 @@ import { CrearRolesComponent } from './usuarios/crear-roles/crear-roles.componen
 import { CrearUsuarioComponent } from './usuarios/crear-usuario/crear-usuario.component';
 import { ModificarUsuarioComponent } from './usuarios/modificar-usuario/modificar-usuario.component';
 import { AsignarRolComponent } from './usuarios/asignar-rol/asignar-rol.component';
-
+import{ServiciosService} from './login/service/servicios.service';
 
 @NgModule({
   declarations: [
@@ -50,9 +50,10 @@ import { AsignarRolComponent } from './usuarios/asignar-rol/asignar-rol.componen
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [ServiciosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
