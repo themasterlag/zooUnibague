@@ -21,8 +21,8 @@ constructor(http:HttpClient){
   
   this.zooService = new ServicioUsuariosService(http);
   this.tipoUsuario="";
-  this. nombreUsuario="";
-  this. rol="";
+  this.nombreUsuario="";
+  this.rol="";
   this.personaExclusiva= "";
   
 }
