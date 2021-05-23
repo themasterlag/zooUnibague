@@ -7,7 +7,8 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent 
+{
   title = 'zooUnibague';
 
   //se declara como atributo el servicio a usar para el llamado al webservice
