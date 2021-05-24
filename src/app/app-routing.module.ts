@@ -9,7 +9,7 @@ import { RegistrarPersonasComponent } from './usuarios/registrar-personas/regist
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/venta', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'venta', component: VentaComponent },
   { path: 'devolucion', component: DevolucionComponent },
   { path: 'login', component: LoginComponent },
