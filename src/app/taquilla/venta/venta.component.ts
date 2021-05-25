@@ -182,6 +182,7 @@ export class VentaComponent implements OnInit {
         "<BR/>";
 
         var listaHabitatsHtmml:string=
+        "<div class='row'><div class='col-12'><strong>HABITATS EN RECORIDO</strong></div></div>"+
         "<div class='row'>"+
           "<div class='col-4'><strong>Nombre</strong></div>"+
           "<div class='col-4'><strong>Tipo</strong></div>"+
