@@ -1,40 +1,27 @@
-<html style="background-image: url(https://i.ytimg.com/vi/EuLdC8IsyWs/maxresdefault.jpg); background-repeat: no-repeat; background-size: 100%;">
-<form style="background-color:chocolate">
+<html style="background-image: url(https://i.ytimg.com/vi/EuLdC8IsyWs/maxresdefault.jpg);background-repeat: no-repeat; background-size: 100%;">
+<form style="background-color: chocolate;">
     <div class="container-fluid">
         <div>
-            <h5 class="alert alert-info text-center"><i class="fas fa-list"></i> Listar Animales</h5>
-        </div>
-        <div class="row">
-            <div class="col">
-                Codigo
-            </div>
-            <div class="col">
-                Nombre
-            </div>
-            <div class="col">
-                Especie
-            </div>
-            <div class="col">
-                FechaNacimiento
-            </div>
-            <div class="col">
-                FechaIngreso
-            </div>
-            <div class="col">
-                Descripcion
-            </div>
-            
-            <button type="submit" class="btn btn-success"><i class="fas fa-eraser"></i>
-                 Listar
-                </button>
+            <h5 class="alert alert-info text-center"><i class="fab fa-searchengin"></i> Buscar Animal</h5>
         </div>
     </div>
-    <style>
+    <ul>
+        <li>
+          <label for="codigo">Codigo:</label>
+          <input type="texto" id="codigo" name="animal_codigo">
+        </li>
+        
+        <li>
+            <button type="submit" class="btn btn-success" (click)="consultarAnimales(animales.codigo)"><i class="far fa-save"></i> Buscar</button>
+        </li>
+        
+       </ul>
+
+       <style>
         form {
 /* Centrar el formulario en la página */
 margin: 0 auto;
-width: 1000px;
-height: 850px;
+width: 400px;
 /* Esquema del formulario */
 padding: 1em;
 border: 1px solid #CCC;

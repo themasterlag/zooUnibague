@@ -27,9 +27,19 @@
                         <li><a class="dropdown-item" routerLink="/litar-ticket"><i class="fas fa-clipboard-list"></i> Listar</a></li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/animales"><i class="fas fa-paw"></i>Animales</a> 
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" routerLink="/animales"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-paw"></i> Animales
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" routerLink="/registrar-animales"><i class="far fa-registered"></i> Registrar</a></li>
+                        <li><a class="dropdown-item" routerLink="/listar-animales"><i class="fas fa-list"></i> Listar</a></li>
+                        <li><a class="dropdown-item" routerLink="/eliminar-animales"><i class="fas fa-eraser"></i> Eliminar</a></li>
+                        <li><a class="dropdown-item" routerLink="/buscar-animales"><i class="fab fa-searchengin"></i> Buscar</a></li>
+                    </ul>
                 </li>
+    
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
                 </li>
