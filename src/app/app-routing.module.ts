@@ -8,6 +8,10 @@ import { AnimalesComponent} from './animales/animales.component';
 import { RegistrarPersonasComponent } from './usuarios/registrar-personas/registrar-personas.component';
 import { FormularioTicketComponent } from './tickets/formulario-ticket/formulario-ticket.component';
 import { ListaTicketComponent } from './tickets/lista-ticket/lista-ticket.component';
+import { ListarAnimalesComponent } from './animales/listar-animales/listar-animales.component';
+import { RegistroAnimalesComponent } from './animales/registro-animales/registro-animales.component';
+import { EliminarAnimalesComponent } from './animales/eliminar-animales/eliminar-animales.component';
+import { BuscarAnimalesComponent } from './animales/buscar-animales/buscar-animales.component';
 
 
 
@@ -18,6 +22,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'usuarios', component: UsuariosComponent },
   { path: 'animales', component: AnimalesComponent },
+  { path: 'eliminar-animales', component: EliminarAnimalesComponent},
+  { path: 'listar-animales', component: ListarAnimalesComponent},
+  { path: 'registrar-animales', component: RegistroAnimalesComponent},
+  { path: 'buscar-animales', component: BuscarAnimalesComponent},
   { path: 'registrar-personas', component: RegistrarPersonasComponent},
   { path: 'crear-ticket/:id', component: FormularioTicketComponent},
   { path: 'litar-ticket', component: ListaTicketComponent}

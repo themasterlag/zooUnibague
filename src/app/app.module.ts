@@ -22,6 +22,7 @@ import { RegistrarPersonasComponent } from './usuarios/registrar-personas/regist
 import { TicketsComponent } from './tickets/tickets.component';
 import { FormularioTicketComponent } from './tickets/formulario-ticket/formulario-ticket.component';
 import { ListaTicketComponent } from './tickets/lista-ticket/lista-ticket.component';
+import { BuscarAnimalesComponent } from './animales/buscar-animales/buscar-animales.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { ListaTicketComponent } from './tickets/lista-ticket/lista-ticket.compon
     RegistrarPersonasComponent,
     TicketsComponent,
     FormularioTicketComponent,
-    ListaTicketComponent
+    ListaTicketComponent,
+    BuscarAnimalesComponent
   ],
   imports: [
     BrowserModule,
