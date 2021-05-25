@@ -34,6 +34,7 @@ export class LoginComponent
 
       if (data.success == true) 
       {
+        this.router.navigateByUrl("/animales");
         console.log(data.mensaje[0]);
       }
       else 
