@@ -24,30 +24,21 @@ export class LoginComponent
    this.zooService = new ServiciosService(http); 
   }
 
- onLogin() 
+onLogin() 
   {
     var tipo = "select";
     var sql = "select * from registro where pwd='" + this.contrasena + "' and email='"+this.email+"';";
     this.zooService.llamadoHttp(tipo, sql).subscribe((data: any) => 
     {
-      console.log(data);
-
-      if (data.success == true) 
-      {
-        this.router.navigateByUrl("/animales");
-        console.log(data.mensaje[0]);
-      }
-      else 
-      {
-        console.log("hubo false en webservice");
-      }
-
-    },
-      (error: any) => 
-      {
-        console.log(error);
-      }
+      this.backbutton();
+      window.alert("Bienvenido al zoologico");
+    }
     );
 
+  }
+
+  backbutton()
+  {
+    this.router.navigate(['/venta']);
   }
 }
