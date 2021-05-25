@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
-
+import { ZooService } from 'src/app/zoo.service';
+import { HttpClient } from '@angular/common/http';
 
 interface cards {
   id: number;
@@ -19,6 +20,10 @@ interface cards {
 
 export class VentaComponent implements OnInit {
 
+  listaTickets:any[]=[];
+
+  zooService:ZooService;
+
   activo:number = 0;
 
   listaSeleccionados:any[] =[];
@@ -30,31 +35,80 @@ export class VentaComponent implements OnInit {
   totalVenta:any=0;
 
   
-  constructor() { }
+  constructor(http:HttpClient) {
+    this.zooService = new ZooService(http);
+
+    var sql = "select * from tickets";
+
+    this.zooService.llamadoHttp( "select", sql ).subscribe((data: any) => {
+     
+      if(data.success == true){
+
+        
+        for (let atributo in data.mensaje) {
+          this.listaTickets.push(data.mensaje[atributo])
+        }
+
+        console.log(this.listaTickets,"Constructor");
+        
+        this.LLenarCardsDeTickets();
+
+        console.log(this.arreglo, "Organizado");
+      }
+      else{
+        console.log("hubo false en webservice");
+      }
+    },(error:any) => { console.log(error); });
+
+  }
+
+
 
   
 
   ngOnInit(): void {
     var con = 0;        
 
-    for (let j = 0; j < 3; j++) {
-      this.tickets = [];
+    // for (let j = 0; j < 3; j++) {
+    //   this.tickets = [];
 
-      for (let i = 0; i < 4; i++) {
-        con += 1;
-        this.tickets.push({
-          id:(con-1),
-          titulo:"Ticket " + (con),
-          precio: (con)*1000+100,          
-          cantidad:0,
-          estado:true
-        })
+    //   for (let i = 0; i < 4; i++) {
+    //     con += 1;
+    //     this.tickets.push({
+    //       id:(con-1),
+    //       titulo:"Ticket " + (con),
+    //       precio: (con)*1000+100,          
+    //       cantidad:0,
+    //       estado:true
+    //     })
+    //   }
+    //   this.arreglo.push(this.tickets); 
+    // }
+
+
+    // console.log(this.arreglo, "Organizado");
+
+  }
+
+  private LLenarCardsDeTickets(){
+
+    var posicionEnBloque = 0;
+    var bloqueTickets:cards[]=[];
+
+    for (let ticket of this.listaTickets) {
+     
+      var ticketCard:cards ={ id: ticket.id,  titulo: ticket.nombre,  precio: ticket.valor, cantidad: 0,  estado: true }
+
+      bloqueTickets.push(ticketCard);
+      posicionEnBloque++;
+      
+      if( posicionEnBloque == 4  ){
+        this.arreglo.push(bloqueTickets); 
+        bloqueTickets=[];
+        posicionEnBloque=0;
       }
-      this.arreglo.push(this.tickets); 
-    }
 
-
-    console.log(this.arreglo);
+    }; 
 
   }
 
