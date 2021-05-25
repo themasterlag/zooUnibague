@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+
 import { HttpClientModule } from '@angular/common/http';
 import { HabitatsComponent } from './habitats/habitats.component';
 import { AnimalesComponent } from './animales/animales.component';
@@ -19,7 +19,11 @@ import { RegistroAnimalesComponent } from './animales/registro-animales/registro
 import { ListarAnimalesComponent } from './animales/listar-animales/listar-animales.component';
 import { EliminarAnimalesComponent } from './animales/eliminar-animales/eliminar-animales.component';
 import { RegistrarPersonasComponent } from './usuarios/registrar-personas/registrar-personas.component';
-import{ServiciosService} from './login/service/servicios.service';
+import { CrearRolesComponent } from './usuarios/crear-roles/crear-roles.component';
+import { CrearUsuarioComponent } from './usuarios/crear-usuario/crear-usuario.component';
+import { ModificarUsuarioComponent } from './usuarios/modificar-usuario/modificar-usuario.component';
+import { AsignarRolComponent } from './usuarios/asignar-rol/asignar-rol.component';
+
 
 @NgModule({
   declarations: [
@@ -36,16 +40,19 @@ import{ServiciosService} from './login/service/servicios.service';
     RegistroAnimalesComponent,
     ListarAnimalesComponent,
     EliminarAnimalesComponent,
-    RegistrarPersonasComponent
+    RegistrarPersonasComponent,
+    CrearRolesComponent,
+    CrearUsuarioComponent,
+    ModificarUsuarioComponent,
+    AsignarRolComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule,
-    FormsModule
+    HttpClientModule
   ],
-  providers: [ServiciosService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
