@@ -27,7 +27,6 @@ export class VentaComponent implements OnInit {
 
   arreglo:any[]=[];
 
-
   totalVenta:any=0;
 
   
