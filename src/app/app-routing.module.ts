@@ -6,6 +6,9 @@ import { LoginComponent } from './login/login.component';
 import {UsuariosComponent} from 'src/app/usuarios/usuarios.component';
 import { AnimalesComponent} from './animales/animales.component';
 import { RegistrarPersonasComponent } from './usuarios/registrar-personas/registrar-personas.component';
+import { FormularioTicketComponent } from './tickets/formulario-ticket/formulario-ticket.component';
+import { ListaTicketComponent } from './tickets/lista-ticket/lista-ticket.component';
+
 
 
 const routes: Routes = [
@@ -15,7 +18,9 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'usuarios', component: UsuariosComponent },
   { path: 'animales', component: AnimalesComponent },
-  {path: 'registrar-personas', component: RegistrarPersonasComponent}
+  { path: 'registrar-personas', component: RegistrarPersonasComponent},
+  { path: 'crear-ticket', component: FormularioTicketComponent},
+  { path: 'litar-ticket', component: ListaTicketComponent}
 ];
 
 @NgModule({

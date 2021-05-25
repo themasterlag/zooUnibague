@@ -1,0 +1,44 @@
+<div class="container-fluid">
+    <div>
+        <h5 class="alert alert-info text-center"><i class="fas fa-ticket-alt"></i> Crear ticket</h5>
+    </div>
+
+    <div class="row">
+        <div class="col-1"></div>
+
+        <div class="col-6">
+            <form>
+                <div class="mb-3">
+                    <label for="nombreTicket" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombreTicket" [(ngModel)]="ticket.nombre">
+                </div>
+                <div class="mb-3">
+                    <label for="valorTicket" class="form-label">Valor</label>
+                    <input type="number" class="form-control" id="valorTicket" [(ngModel)]="ticket.valor">
+                </div>
+                <div class="mb-3">
+                    <label for="tipoTicket" class="form-label">tipo</label>
+                    <input type="Text" class="form-control" id="tipoTicket" [(ngModel)]="ticket.tipo">
+                </div>
+                <br>
+                <button type="submit" class="btn btn-success" (click)="guardar()"><i class="far fa-save"></i> Guardar</button>
+            </form>
+            
+        </div>
+
+        <div class="col-1"></div>
+    
+        <div class="col-3">
+        <!-- habitats -->
+            <label for="nombreTicket" class="form-label">Habitats asignados</label>
+
+            <select class="form-select h-75 text-center" multiple aria-label="Lista habitats" [(ngModel)]="listaHabitatsSeleccionados">
+                <option *ngFor="let habitat of listaHabitats;let i = index" [ngValue]="habitat">
+                    {{habitat.nombre}} 
+                </option>
+            </select>
+        </div>
+    </div>
+
+    
+</div>

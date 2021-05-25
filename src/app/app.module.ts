@@ -20,6 +20,9 @@ import { ListarAnimalesComponent } from './animales/listar-animales/listar-anima
 import { EliminarAnimalesComponent } from './animales/eliminar-animales/eliminar-animales.component';
 import { RegistrarPersonasComponent } from './usuarios/registrar-personas/registrar-personas.component';
 import{ServiciosService} from './login/service/servicios.service';
+import { TicketsComponent } from './tickets/tickets.component';
+import { FormularioTicketComponent } from './tickets/formulario-ticket/formulario-ticket.component';
+import { ListaTicketComponent } from './tickets/lista-ticket/lista-ticket.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import{ServiciosService} from './login/service/servicios.service';
     RegistroAnimalesComponent,
     ListarAnimalesComponent,
     EliminarAnimalesComponent,
-    RegistrarPersonasComponent
+    RegistrarPersonasComponent,
+    TicketsComponent,
+    FormularioTicketComponent,
+    ListaTicketComponent
   ],
   imports: [
     BrowserModule,
