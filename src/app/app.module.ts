@@ -19,10 +19,10 @@ import { RegistroAnimalesComponent } from './animales/registro-animales/registro
 import { ListarAnimalesComponent } from './animales/listar-animales/listar-animales.component';
 import { EliminarAnimalesComponent } from './animales/eliminar-animales/eliminar-animales.component';
 import { RegistrarPersonasComponent } from './usuarios/registrar-personas/registrar-personas.component';
-import{ServiciosService} from './login/service/servicios.service';
 import { TicketsComponent } from './tickets/tickets.component';
 import { FormularioTicketComponent } from './tickets/formulario-ticket/formulario-ticket.component';
 import { ListaTicketComponent } from './tickets/lista-ticket/lista-ticket.component';
+
 
 @NgModule({
   declarations: [
@@ -51,7 +51,7 @@ import { ListaTicketComponent } from './tickets/lista-ticket/lista-ticket.compon
     HttpClientModule,
     FormsModule
   ],
-  providers: [ServiciosService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
