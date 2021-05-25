@@ -21,7 +21,7 @@ export class AppComponent
     this.zooService = new ZooService(http);
 
     //se llama al metodo de ejemplo de uso del webservice
-    this.llamadoEjemplo();
+    // this.llamadoEjemplo();
   }
 
   //metodo de ejemplo para usar webservice

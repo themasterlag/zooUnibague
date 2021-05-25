@@ -39,13 +39,15 @@ export class FormularioTicketComponent implements OnInit {
 
   listaHabitatsSeleccionados:Habitat[] = [];
 
+  cargo:boolean = false;
+
   constructor(http:HttpClient, private route: ActivatedRoute, private router: Router){
     this.zooService = new ZooService(http);
     
   }
 
   ngOnInit(): void {
-    this.consultarHabitats();
+    this.consultarListaHabitats();
 
     var id = this.route.snapshot.paramMap.get('id');
     if(id != null){
@@ -139,10 +141,13 @@ export class FormularioTicketComponent implements OnInit {
     this.zooService.llamadoHttp(tipo, sql).subscribe(
       (data:any) =>{
         if(data.success == true){
-          this.ticket.id = data.message[0].id;
-          this.ticket.nombre = data.message[0].nombre;
-          this.ticket.valor = data.message[0].valor;
-          this.ticket.tipo = data.message[0].tipo;
+          console.log(data.mensaje[0])
+          this.ticket.id = data.mensaje[0].id;
+          this.ticket.nombre = data.mensaje[0].nombre;
+          this.ticket.valor = data.mensaje[0].valor;
+          this.ticket.tipo = data.mensaje[0].tipo;
+
+          console.log(this.ticket,"ti")
         }
         else{
           Swal.fire({
@@ -165,7 +170,7 @@ export class FormularioTicketComponent implements OnInit {
   }
 
 
-  private consultarHabitats(){
+  private consultarListaHabitats(){
     var tipo = "select";
     var sql = "SELECT * FROM habitats";
 
