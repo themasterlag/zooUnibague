@@ -22,6 +22,11 @@ interface cards {
 
 export class VentaComponent implements OnInit {
 
+  datosCliente:any ={
+    cedula:"",
+    nombre:""
+  }
+
   listaTickets:any[]=[];
 
   zooService:ZooService;
@@ -182,7 +187,7 @@ export class VentaComponent implements OnInit {
         "<BR/>";
 
         var listaHabitatsHtmml:string=
-        "<div class='row'><div class='col-12'><strong>HABITATS EN RECORIDO</strong></div></div>"+
+        "<div class='row'><div class='col-12'><strong>HABITATS EN RECORRIDO</strong></div></div>"+
         "<div class='row'>"+
           "<div class='col-4'><strong>Nombre</strong></div>"+
           "<div class='col-4'><strong>Tipo</strong></div>"+
@@ -211,9 +216,10 @@ export class VentaComponent implements OnInit {
         console.log("hubo false en webservice");
       }
     },(error:any) => { console.log(error); });
+  }
 
 
-
+  public generarFactura(){
 
   }
 
