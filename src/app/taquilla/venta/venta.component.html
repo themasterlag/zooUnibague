@@ -17,11 +17,11 @@
 
 <div class="container-fluid">
     <div class="col-12">
-        <h5 class="alert alert-info text-center"><i class="fas fa-store"></i> Venta</h5>
+        <h6 class="alert alert-info text-center"><i class="fas fa-store"></i> Venta</h6>
 
         <div class="container-fluid">
             <div class="row" style="border-color: gainsboro; border-style: dashed;">
-                <h6 class="alert alert-primary " role="alert"><i class="fas fa-ticket-alt"></i> Tickets</h6>
+                <h6 class="alert alert-primary py-2" role="alert"><i class="fas fa-ticket-alt"></i> Tickets</h6>
                 <div id="carrusel" class="carousel carousel-dark slide " data-ride="carousel" data-interval="false">
                     <div class="carousel-inner">
                         <div class="carousel-item" *ngFor="let dato of arreglo;let i = index"
@@ -42,7 +42,7 @@
                                                 <div *ngIf="!(ticket.estado)" class="col-6">
                                                     <button type="button"
                                                         class="w-100 text-center btn btn-outline-danger fas float-right px-0"
-                                                        disabled>Deshabilitado</button>
+                                                        disabled><i class="fas fa-times"></i></button>
                                                 </div>
                                                 <div class="col-6">
                                                     <button type="button"
@@ -75,19 +75,17 @@
         <br>
 
         <div>
-            <h6 class="alert alert-primary align-middle col-lg-12" role="alert">
+            <h6 class="alert alert-primary align-middle col-12 py-1" role="alert">
                 <div class="row">
                     <div class="col-2"><i class="fas fa-clipboard-list"></i> Cliente</div>
-                    <div class="col-1">Cedula:</div> <div class="col-3"><input type="text" class="form-control form-control-sm" [(ngModel)]="datosCliente.cedula"></div>
-                    <div class="col-1">Nombre:</div> <div class="col-5"><input type="text" class="form-control form-control-sm" [(ngModel)]="datosCliente.nombre"></div>
+                    <div class="col-1">Cedula: </div> <div class="col-3"><input type="text" class="form-control form-control-sm" [(ngModel)]="datosCliente.cedula"></div>
+                    <div class="col-1">Nombre: </div> <div class="col-5"><input type="text" class="form-control form-control-sm" [(ngModel)]="datosCliente.nombre"></div>
                 </div>
             </h6>
         </div>
 
-        <br>
-
         <div>
-            <h6 class="alert alert-primary align-middle col-lg-12" role="alert">
+            <h6 class="alert alert-primary align-middle col-12 py-1" role="alert">
                 <div class="row">
                         <div class="col-10">
                             <div class="mt-2 pe-5">
