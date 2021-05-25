@@ -23,7 +23,7 @@
                         <i class="fas fa-ticket-alt"></i> Tickets
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" routerLink="/crear-ticket"><i class="fas fa-ticket-alt"></i> Crear</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/crear-ticket', null]"><i class="fas fa-ticket-alt"></i> Crear</a></li>
                         <li><a class="dropdown-item" routerLink="/litar-ticket"><i class="fas fa-clipboard-list"></i> Listar</a></li>
                     </ul>
                 </li>
@@ -41,13 +41,13 @@
                 </li>
     
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="#">Habitats</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/usuarios"> <i class="fas fa-users"></i> Usuarios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link pull-left" routerLink="/ventas" style="padding-left: 17cm;"><i class="fas fa-sign-in-alt"></i> Cerrar Sesion </a>
                 </li>
                 <!-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"

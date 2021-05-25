@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'registrar-animales', component: RegistroAnimalesComponent},
   { path: 'buscar-animales', component: BuscarAnimalesComponent},
   { path: 'registrar-personas', component: RegistrarPersonasComponent},
-  { path: 'crear-ticket', component: FormularioTicketComponent},
+  { path: 'crear-ticket/:id', component: FormularioTicketComponent},
   { path: 'litar-ticket', component: ListaTicketComponent}
 ];
 

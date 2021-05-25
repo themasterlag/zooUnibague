@@ -60,8 +60,6 @@ export class VentaComponent implements OnInit {
 
   }
 
-
-
   
 
   ngOnInit(): void {
@@ -180,7 +178,7 @@ export class VentaComponent implements OnInit {
 
         var ticket:any = this.encontrar(id,0);
 
-        var infoTickethtml:String=
+        var infoTickethtml:string=
         "<div class='row'><div class='col-3 text-start'><strong>Nombre:</strong></div><div class='col-9 text-end'>" + ticket.titulo +"</div></div>"+
         "<div class='row'><div class='col-3 text-start'><strong>Tipo:</strong></div><div class='col-9 text-end'>" + ticket.tipo +"</div></div>"+
         "<div class='row'><div class='col-3 text-start'><strong>Valor:</strong></div><div class='col-9 text-end'>$ " + ticket.precio +"</div></div>"+
@@ -220,7 +218,152 @@ export class VentaComponent implements OnInit {
 
 
   public generarFactura(){
+    if(this.datosCliente.cedula=="" || this.datosCliente.nombre==""){
+      alert("Debe ingresar los datos del cliente");
+    }
+    else{
+      var valorTotal:number=0;
+      var sqlDetalles:string[]=[];
+
+      for (let registro of this.listaSeleccionados) {
+        valorTotal = valorTotal + (registro.precio * registro.cantidad);
+
+        sqlDetalles.push(
+          "INSERT INTO detallesFacturas ("+
+            "idFactura,"+
+            "idTicket,"+
+            "valor,"+
+            "cantidad,"+
+            "valorTotal"+
+          ") values ("+
+            "@idFactura,"+
+            registro.id + ","+
+            registro.precio + ","+
+            registro.cantidad + ","+
+            (registro.precio * registro.cantidad) +
+          ");"
+        );
+
+      }         
+
+      var sql = 
+      "INSERT INTO facturas ("+
+        "usuarioEmpleado, "+
+        "cedulaCliente, "+
+        "nombreCliente, "+
+        "valorTotal, "+
+        "fechaVenta "+
+      ") values ("+
+        "1,"+
+        this.datosCliente.cedula + ","+
+        "'"+this.datosCliente.nombre + "',"+
+        valorTotal + ","+
+        "CURDATE()"+
+      ")";
+
+
+      this.zooService.llamadoHttp( "insert", sql ).subscribe((dataEnc: any) => {    
+        if(dataEnc.success == true){
+
+          for (let sqlDetalle of sqlDetalles) {
+
+            let regex = /\@idFactura/gi;
+            sqlDetalle = sqlDetalle.replace(regex, dataEnc.mensaje.id);  
+            console.log(sqlDetalle);
+
+
+            this.zooService.llamadoHttp( "insert", sqlDetalle ).subscribe((dataDet: any) => {    
+              if(dataDet.success == true){
+
+              }
+              else{
+                console.log("hubo false en webservice");
+              }
+            },(error:any) => { console.log(error); });    
+
+          }
+
+          this.mostrarFactura(dataEnc.mensaje.id);
+
+        }
+        else{
+          console.log("hubo false en webservice");
+        }
+      },(error:any) => { console.log(error); });    
+      
+      
+    }
 
   }
+
+
+
+  public mostrarFactura(factura:number){
+    var sqlEncabezados = "select * from facturas where numero = "+factura;
+    var sqlDetalles = "select D.*,T.nombre from detallesFacturas D inner join tickets T on D.idTicket=T.id where D.idFactura = "+factura;
+
+    this.zooService.llamadoHttp( "select", sqlEncabezados ).subscribe((dataEnc: any) => {    
+      if(dataEnc.success == true){
+
+        let encabezadoFactura: any = dataEnc.mensaje[0];
+
+        this.zooService.llamadoHttp( "select", sqlDetalles ).subscribe((dataDet: any) => {    
+          if(dataDet.success == true){
+
+
+              var infoEncabezadoHtml:string=
+              "<div class='row justify-content-end'><div class='col-2 text-start'><strong>Fecha:</strong></div><div class='col-3 text-end'>" + encabezadoFactura.fechaVenta +"</div></div>"+
+              "<div class='row'><div class='col-3 text-start'><strong>Cliente:</strong></div><div class='col-9 text-start'>" + encabezadoFactura.nombreCliente +"</div></div>"+
+              "<div class='row'><div class='col-3 text-start'><strong>Documento:</strong></div><div class='col-9 text-start'>" + encabezadoFactura.cedulaCliente +"</div></div>";
+              
+              var detallesFacturasHtmml:string=
+              "<div class='row'><div class='col-12'><strong>Detalle Factura</strong></div></div>"+
+              "<div class='row'>"+
+                "<div class='col-3'><strong>Ticket</strong></div>"+
+                "<div class='col-3'><strong>Cantidad</strong></div>"+
+                "<div class='col-3'><strong>Valor Uni.</strong></div>"+
+                "<div class='col-3'><strong>Valor Det.</strong></div>"+
+              "</div>";
+              
+              for (let elemento in dataDet.mensaje) {
+                detallesFacturasHtmml += 
+                "<div class='row'>"+
+                  "<div class='col-3 text-start'>" + dataDet.mensaje[elemento].nombre + "</div>"+
+                  "<div class='col-3'>" + dataDet.mensaje[elemento].cantidad + "</div>"+
+                  "<div class='col-3'>$ " + dataDet.mensaje[elemento].valor + "</div>"+
+                  "<div class='col-3'>$ " + dataDet.mensaje[elemento].valorTotal + "</div>"+                  
+                "</div>";
+              }     
+
+              var infoPieHtml:string=
+              "<div class='row justify-content-end'><div class='col-3 text-start'><strong>TOTAL:</strong></div><div class='col-4 text-end'>$ " + encabezadoFactura.valorTotal +"</div></div>";
+      
+       
+              
+              Swal.fire({
+                title: "<strong><u>Factura No. "+encabezadoFactura.numero+"</u></strong>",
+                width: 600,
+                html: infoEncabezadoHtml + detallesFacturasHtmml + infoPieHtml,
+                showCloseButton: true,
+                showConfirmButton: false
+              });
+
+
+
+          }
+          else{
+            console.log("hubo false en webservice");
+          }
+        },(error:any) => { console.log(error); });   
+
+
+      }
+      else{
+        console.log("hubo false en webservice");
+      }
+    },(error:any) => { console.log(error); });
+  }
+
+
 
 }

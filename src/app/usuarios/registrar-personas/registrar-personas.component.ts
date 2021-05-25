@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RegistroService } from 'src/app/usuarios/registrar-personas/registro.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registrar-personas',
   templateUrl: './registrar-personas.component.html',
   styleUrls: ['./registrar-personas.component.css']
 })
-export class RegistrarPersonasComponent 
-{
+export class RegistrarPersonasComponent {
   title = 'zooUnibague';
   nombre: String;
   apellido: String;
   edad: number;
-  fechaDeNacimiento:String;
+  fechaDeNacimiento: String;
   genero: String;
   cedula: number;
   telefono: number;
@@ -22,12 +22,11 @@ export class RegistrarPersonasComponent
   email: String;
   zooService: RegistroService;
 
-  constructor(http: HttpClient) 
-  {
+  constructor(http: HttpClient, private router: Router) {
     this.nombre = "";
     this.apellido = "";
     this.edad = 0;
-    this.fechaDeNacimiento ="" ;
+    this.fechaDeNacimiento = "";
     this.cedula = 0;
     this.genero = "";
     this.telefono = 0;
@@ -37,27 +36,32 @@ export class RegistrarPersonasComponent
     this.zooService = new RegistroService(http);
   }
 
-  insertarPersonas() 
+  verificarPersonas()
   {
+    if(this.nombre==""||this.contrasena==""||this.edad==0||this.fechaDeNacimiento==""||this.cedula==0||this.genero==""||this.telefono==0||this.usuario==""||this.contrasena==""||this.email=="")
+      {
+
+        return false;
+      }
+      return true;
+
+  }
+
+  insertarPersonas() {
     var tipo = "insert";
     var sql = "INSERT INTO persona(nombre,apellido,edad,fechaNacimiento,id,genero,telefono,usuario,pwd,email) VALUES('" + this.nombre + "','" + this.apellido + "'," + this.edad + ",'" + this.fechaDeNacimiento + "'," + this.cedula + ",'" + this.genero + "'," + this.telefono + ",'" + this.usuario + "','" + this.contrasena + "','" + this.email + "');";
-    this.zooService.llamadoHttp(tipo, sql).subscribe((data: any) => 
-    {
-      console.log(data);
+    this.zooService.llamadoHttp(tipo, sql).subscribe((data: any) => {
 
-      if (data.success == true) 
+      if(this.verificarPersonas()==false)
       {
-        console.log(data.mensaje[0]);
+        this.router.navigate(['/registrar-personas']);  
       }
-      else {
-        console.log("hubo false en webservice");
+      else if(this.nombre!=""&&this.contrasena!=""&&this.edad!=0&&this.fechaDeNacimiento!=""&&this.cedula!=0&&this.genero!=""&&this.telefono!=0&&this.usuario!=""&&this.contrasena!=""&&this.email!="")
+      {
+        this.router.navigate(['/ventas']);
       }
 
     },
-      (error: any) => 
-      {
-        console.log(error);
-      }
     );
 
   }
