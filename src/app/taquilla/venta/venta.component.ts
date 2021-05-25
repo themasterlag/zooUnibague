@@ -220,6 +220,81 @@ export class VentaComponent implements OnInit {
 
 
   public generarFactura(){
+    if(this.datosCliente.cedula=="" || this.datosCliente.nombre==""){
+      alert("Debe ingresar los datos del cliente");
+    }
+    else{
+      var valorTotal:number=0;
+      var sqlDetalles:string[]=[];
+
+      for (let registro of this.listaSeleccionados) {
+        valorTotal = valorTotal + (registro.precio * registro.cantidad);
+
+        sqlDetalles.push(
+          "INSERT INTO detallesFacturas ("+
+            "idFactura,"+
+            "idTicket,"+
+            "valor,"+
+            "cantidad,"+
+            "valorTotal"+
+          ") values ("+
+            "@idFactura,"+
+            registro.id + ","+
+            registro.precio + ","+
+            registro.cantidad + ","+
+            (registro.precio * registro.cantidad) +
+          ");"
+        );
+
+      }         
+
+      var sql = 
+      "INSERT INTO facturas ("+
+        "usuarioEmpleado, "+
+        "cedulaCliente, "+
+        "nombreCliente, "+
+        "valorTotal, "+
+        "fechaVenta "+
+      ") values ("+
+        "1,"+
+        this.datosCliente.cedula + ","+
+        "'"+this.datosCliente.nombre + "',"+
+        valorTotal + ","+
+        "CURDATE()"+
+      ")";
+
+
+      this.zooService.llamadoHttp( "insert", sql ).subscribe((dataEnc: any) => {    
+        if(dataEnc.success == true){
+
+          for (let sqlDetalle of sqlDetalles) {
+
+            let regex = /\@idFactura/gi;
+            sqlDetalle = sqlDetalle.replace(regex, dataEnc.mensaje.id);  
+            console.log(sqlDetalle);
+
+
+            this.zooService.llamadoHttp( "insert", sqlDetalle ).subscribe((dataDet: any) => {    
+              if(dataDet.success == true){
+
+                console.log(dataDet);
+      
+              }
+              else{
+                console.log("hubo false en webservice");
+              }
+            },(error:any) => { console.log(error); });    
+
+          }
+
+        }
+        else{
+          console.log("hubo false en webservice");
+        }
+      },(error:any) => { console.log(error); });    
+      
+      
+    }
 
   }
 
