@@ -31,7 +31,7 @@
             <label for="nombreTicket" class="form-label">Habitats asignados</label>
 
             <select class="form-select h-75 text-center" multiple aria-label="Lista habitats" [(ngModel)]="listaHabitatsSeleccionados">
-                <option *ngFor="let habitat of listaHabitats;let i = index" [ngValue]="habitat">
+                <option  *ngFor="let habitat of listaHabitats;let i = index" [ngValue]="habitat">
                     {{habitat.nombre}} 
                 </option>
             </select>

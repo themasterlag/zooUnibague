@@ -134,6 +134,7 @@ export class FormularioTicketComponent implements OnInit {
     );
   }
 
+  
   private consultarTicket(id:String){
     var tipo = "select";
     var sql = "SELECT * FROM tickets WHERE id = " + id;
@@ -147,7 +148,43 @@ export class FormularioTicketComponent implements OnInit {
           this.ticket.valor = data.mensaje[0].valor;
           this.ticket.tipo = data.mensaje[0].tipo;
 
-          console.log(this.ticket,"ti")
+          console.log(this.ticket,"ti");
+          this.consultarListaHabitatsSeleccionadas(id);
+        }
+        else{
+          Swal.fire({
+            title: 'Error!',
+            text: 'Hubo un erro en el servidor!',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+          });
+        }
+      },
+      (error:any) =>{
+        Swal.fire({
+          title: 'Error!',
+          text: error.message,
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        });
+      }
+    );
+  }
+
+  private consultarListaHabitatsSeleccionadas(id:String){
+    var tipo = "select";
+    var sql = "SELECT * FROM detallesTickets WHERE idTicket = " + id
+    this.zooService.llamadoHttp(tipo, sql).subscribe(
+      (data:any) =>{
+        if(data.success == true){
+          for (let i in data.mensaje) {
+            this.listaHabitats.forEach(element => {
+              if (data.mensaje[i].id == element.id) {
+                this.listaHabitatsSeleccionados.push(element);
+              }
+            });
+          }
+          console.log(this.listaHabitatsSeleccionados,"selec");
         }
         else{
           Swal.fire({
@@ -201,5 +238,17 @@ export class FormularioTicketComponent implements OnInit {
     );
   }
 
+  public estaSeleccionado(id:number){
+    for (let i = 0; i < this.listaHabitatsSeleccionados.length; i++) {
+      console.log(id)
+      const element = this.listaHabitatsSeleccionados[i];
+      if(element.id == id){
+        console.log("====");
+        return true;
+        
+      }
+    }
+    return false;
+  }
 
 }

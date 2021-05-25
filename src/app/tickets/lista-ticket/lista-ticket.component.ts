@@ -43,10 +43,12 @@ export class ListaTicketComponent implements OnInit {
     this.consultarListaTickets();
     this.consultarListaHabitats();
   }
-
+ 
   public consultarListaTickets(){
     var tipo = "select";
     var sql = "SELECT * FROM tickets";
+
+    this.listaTickets = [];
 
     this.zooService.llamadoHttp(tipo, sql).subscribe(
       (data:any) =>{
@@ -58,7 +60,7 @@ export class ListaTicketComponent implements OnInit {
         else{
           Swal.fire({
             title: 'Error!',
-            text: 'Hubo un erro en el servidor!',
+            text: 'Hubo un error en el servidor!',
             icon: 'error',
             confirmButtonText: 'Ok'
           });
@@ -80,6 +82,8 @@ export class ListaTicketComponent implements OnInit {
     var tipo = "select";
     var sql = "SELECT * FROM habitats";
 
+    this.listaHabitats = [];
+
     this.zooService.llamadoHttp(tipo, sql).subscribe(
       (data:any) =>{
         if(data.success == true){
@@ -90,7 +94,47 @@ export class ListaTicketComponent implements OnInit {
         else{
           Swal.fire({
             title: 'Error!',
-            text: 'Hubo un erro en el servidor!',
+            text: 'Hubo un error en el servidor!',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+          });
+        }
+      },
+      (error:any) =>{
+        Swal.fire({
+          title: 'Error!',
+          text: error.message,
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        });
+      }
+    );
+  }
+
+  public eliminar(id:number){
+    var tipo = "delete";
+    var sql = "DELETE FROM tickets where id = " + id;
+    Swal.fire({
+      title:'Eliminado!',
+      html: '<i class="fas fa-spinner fa-pulse"></i>',
+      icon: 'info',
+      confirmButtonText: 'Ok'
+    });
+    this.zooService.llamadoHttp(tipo, sql).subscribe(
+      (data:any) =>{
+        if(data.success == true){
+          this.consultarListaTickets();
+          Swal.fire({
+            title:'Eliminado!',
+            text: 'Se elimino correctamente',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+          });
+        }
+        else{
+          Swal.fire({
+            title: 'Error!',
+            text: data.message[0],
             icon: 'error',
             confirmButtonText: 'Ok'
           });
