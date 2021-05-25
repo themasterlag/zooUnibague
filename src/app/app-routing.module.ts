@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'usuarios', component: UsuariosComponent },
   { path: 'animales', component: AnimalesComponent },
   { path: 'registrar-personas', component: RegistrarPersonasComponent},
-  { path: 'crear-ticket', component: FormularioTicketComponent},
+  { path: 'crear-ticket/:id', component: FormularioTicketComponent},
   { path: 'litar-ticket', component: ListaTicketComponent}
 ];
 
