@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RegistroService } from 'src/app/usuarios/registrar-personas/registro.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registrar-personas',
@@ -40,30 +41,68 @@ export class RegistrarPersonasComponent {
   {
     if(this.nombre==""||this.contrasena==""||this.edad==0||this.fechaDeNacimiento==""||this.cedula==0||this.genero==""||this.telefono==0||this.usuario==""||this.contrasena==""||this.email=="")
       {
-
         return false;
       }
       return true;
-
   }
+
+  ocultarContrasena()
+  {
+    var contra = document.getElementById('pass');
+    contra?.setAttribute('type','password');
+  }
+
+  mostrarContrasena()
+  {
+    var contra = document.getElementById('pass');
+    contra?.setAttribute('type','text');
+  }
+
+
 
   insertarPersonas() {
     var tipo = "insert";
     var sql = "INSERT INTO persona(nombre,apellido,edad,fechaNacimiento,id,genero,telefono,usuario,pwd,email) VALUES('" + this.nombre + "','" + this.apellido + "'," + this.edad + ",'" + this.fechaDeNacimiento + "'," + this.cedula + ",'" + this.genero + "'," + this.telefono + ",'" + this.usuario + "','" + this.contrasena + "','" + this.email + "');";
-    this.zooService.llamadoHttp(tipo, sql).subscribe((data: any) => {
-
-      if(this.verificarPersonas()==false)
+    if(this.verificarPersonas()==false)
       {
-        this.router.navigate(['/registrar-personas']);  
+        Swal.fire({
+          title: 'Error!',
+          text: "Debe rellenar todos los campos",
+          icon: 'warning',
+          confirmButtonText: 'Ok',
+          footer:'No olvidar'
+        }); 
+        return;   
       }
-      else if(this.nombre!=""&&this.contrasena!=""&&this.edad!=0&&this.fechaDeNacimiento!=""&&this.cedula!=0&&this.genero!=""&&this.telefono!=0&&this.usuario!=""&&this.contrasena!=""&&this.email!="")
+      if(this.email.includes("@")==false)
       {
-        this.router.navigate(['/ventas']);
+        Swal.fire({
+          title: 'Error!',
+          text: "Debe ingresar un correo correcto",
+          icon: 'warning',
+          confirmButtonText: 'Ok',
+          footer:'Error de digitación'
+        });
+        return;
       }
-
-    },
-    );
-
+    else if(this.nombre!="" && this.contrasena!="" && this.edad!=0 && this.fechaDeNacimiento!="" && this.cedula!=0
+     && this.genero!="" && this.telefono!=0 && this.usuario!="" && this.contrasena!="" && this.email!="")
+      {
+        this.zooService.llamadoHttp(tipo, sql).subscribe((data: any) => 
+        {
+          Swal.fire({
+            title: 'Registrado',
+            text: "Se ha registrado con éxito",
+            icon: 'success',
+            confirmButtonText: 'Ok',
+            footer:'Esta informacion es importante'
+          });
+          this.router.navigate(['/login']);
+        },
+        );
+        
+        
+        
+      }
   }
-
 }
