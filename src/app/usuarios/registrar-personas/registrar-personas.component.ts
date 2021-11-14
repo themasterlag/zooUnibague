@@ -58,12 +58,34 @@ export class RegistrarPersonasComponent {
     contra?.setAttribute('type','text');
   }
 
-
-
   insertarPersonas() {
     var tipo = "insert";
-    var sql = "INSERT INTO persona(nombre,apellido,edad,fechaNacimiento,id,genero,telefono,usuario,pwd,email) VALUES('" + this.nombre + "','" + this.apellido + "'," + this.edad + ",'" + this.fechaDeNacimiento + "'," + this.cedula + ",'" + this.genero + "'," + this.telefono + ",'" + this.usuario + "','" + this.contrasena + "','" + this.email + "');";
-    if(this.verificarPersonas()==false)
+    var sql = "INSERT INTO persona(nombre,apellido,edad,fechaNacimiento,id,genero,telefono,usuario,pwd,email) VALUES('" + this.nombre + "','" + this.apellido + "'," + this.edad + ",'" + this.fechaDeNacimiento + "'," + this.cedula + ",'" + this.genero + "'," + this.telefono + ",'" + this.usuario + "','" + this.contrasena + "','" + this.email.toLowerCase() + "');";
+      if(this.nombre.includes("0")==true || this.nombre.includes("1")==true || this.nombre.includes("2")==true || this.nombre.includes("3")==true || this.nombre.includes("4")==true ||
+      this.nombre.includes("4")==true || this.nombre.includes("5")==true || this.nombre.includes("7")==true || this.nombre.includes("8")==true || this.nombre.includes("9")==true)
+      {
+        Swal.fire({
+          title: 'Error!',
+          text: "Debe ingresar nombre correcto",
+          icon: 'warning',
+          confirmButtonText: 'Ok',
+          footer:'Error de digitación'
+        });
+        return;
+      }
+      if(this.apellido.includes("0")==true || this.apellido.includes("1")==true || this.apellido.includes("2")==true || this.apellido.includes("3")==true || this.apellido.includes("4")==true ||
+      this.apellido.includes("4")==true || this.apellido.includes("5")==true || this.apellido.includes("6")==true ||this.apellido.includes("7")==true || this.apellido.includes("8")==true || this.apellido.includes("9")==true)
+      {
+        Swal.fire({
+          title: 'Error!',
+          text: "Debe ingresar nombre correcto",
+          icon: 'warning',
+          confirmButtonText: 'Ok',
+          footer:'Error de digitación'
+        });
+        return;
+      }
+      if(this.verificarPersonas()==false)
       {
         Swal.fire({
           title: 'Error!',
@@ -74,7 +96,7 @@ export class RegistrarPersonasComponent {
         }); 
         return;   
       }
-      if(this.email.includes("@")==false)
+    if(this.email.includes("@")==false || this.email.includes(".")==false)
       {
         Swal.fire({
           title: 'Error!',

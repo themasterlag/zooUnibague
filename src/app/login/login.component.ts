@@ -25,28 +25,43 @@ export class LoginComponent
    this.zooService = new ServiciosService(http); 
   }
 
-onLogin() 
+
+  onLogin() 
   {
+    if(this.email.includes("@")==false || this.email.includes(".")==false)
+    {
+      Swal.fire({
+        title: 'Error!',
+        text: "Ingrese el email correcto!",
+        icon: 'warning',
+        confirmButtonText: 'Ok',
+      });
+      return;
+    }
     var tipo = "select";
-    var sql = "select * from registro where pwd='" + this.contrasena + "' and email='"+this.email+"';";
+    var sql = "select * from persona where pwd='" + this.contrasena + "' and email='"+this.email.toLowerCase()+"';";
     this.zooService.llamadoHttp(tipo, sql).subscribe((data: any) => 
     {
       if(data.success == true)
       {
-        console.log(data.mensaje[0]);
-        this.email = data.mensaje[0].email; 
-        this.contrasena = data.mensaje[0].contrasena; 
+        Swal.fire({
+          title: 'Éxito!',
+          text: "Ha ingresado con éxito!",
+          icon: 'success',
+          confirmButtonText: 'Ok',
+        });
         this.router.navigate(['/venta']);
       }
       else
       {
         Swal.fire({
           title: 'Error!',
-          text: "Al parecer este usuario no está registrado!",
+          text: "Al parecer este usuario no está registrado o ingresó mal los datos!",
           icon: 'warning',
           confirmButtonText: 'Ok',
           footer:'Esta informacion es importante'
         });
+        this.router.navigate(['/login']);
       }
     }
     );
