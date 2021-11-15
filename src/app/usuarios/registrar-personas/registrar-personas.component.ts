@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
   templateUrl: './registrar-personas.component.html',
   styleUrls: ['./registrar-personas.component.css']
 })
+
 export class RegistrarPersonasComponent {
   title = 'zooUnibague';
   nombre: String;
@@ -22,6 +23,7 @@ export class RegistrarPersonasComponent {
   contrasena: String;
   email: String;
   zooService: RegistroService;
+
 
   constructor(http: HttpClient, private router: Router) {
     this.nombre = "";
@@ -58,7 +60,8 @@ export class RegistrarPersonasComponent {
     contra?.setAttribute('type','text');
   }
 
-  insertarPersonas() {
+  insertarPersonas() 
+  {
     var tipo = "insert";
     var sql = "INSERT INTO persona(nombre,apellido,edad,fechaNacimiento,id,genero,telefono,usuario,pwd,email) VALUES('" + this.nombre + "','" + this.apellido + "'," + this.edad + ",'" + this.fechaDeNacimiento + "'," + this.cedula + ",'" + this.genero + "'," + this.telefono + ",'" + this.usuario + "','" + this.contrasena + "','" + this.email.toLowerCase() + "');";
       if(this.nombre.includes("0")==true || this.nombre.includes("1")==true || this.nombre.includes("2")==true || this.nombre.includes("3")==true || this.nombre.includes("4")==true ||
@@ -110,21 +113,17 @@ export class RegistrarPersonasComponent {
     else if(this.nombre!="" && this.contrasena!="" && this.edad!=0 && this.fechaDeNacimiento!="" && this.cedula!=0
      && this.genero!="" && this.telefono!=0 && this.usuario!="" && this.contrasena!="" && this.email!="")
       {
-        this.zooService.llamadoHttp(tipo, sql).subscribe((data: any) => 
-        {
-          Swal.fire({
-            title: 'Registrado',
-            text: "Se ha registrado con éxito",
-            icon: 'success',
-            confirmButtonText: 'Ok',
-            footer:'Esta informacion es importante'
-          });
-          this.router.navigate(['/login']);
-        },
-        );
-        
-        
-        
+        this.zooService.llamadoHttp(tipo, sql).subscribe((data: any) =>
+            {
+              Swal.fire({
+                title: 'Registrado',
+                text: "Se ha registrado con éxito",
+                icon: 'success',
+                confirmButtonText: 'Ok',
+                footer:'Esta informacion es importante'
+              });
+              this.router.navigate(['/login']);
+            });        
       }
   }
 }
