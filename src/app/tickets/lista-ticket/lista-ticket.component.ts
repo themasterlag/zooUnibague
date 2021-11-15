@@ -32,11 +32,11 @@ export class ListaTicketComponent implements OnInit {
   listaTickets:Ticket[] = [];
 
   listaHabitats:Habitat[] = [];
-
+  nombreUsuario: String;
 
   constructor(http:HttpClient, private route: ActivatedRoute, private router: Router){
     this.zooService = new ZooService(http);
-    
+    this.nombreUsuario = "";
   }
 
   ngOnInit(): void {
