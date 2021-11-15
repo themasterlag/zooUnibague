@@ -45,6 +45,21 @@ export class VentaComponent implements OnInit {
   constructor(http:HttpClient) {
     this.zooService = new ZooService(http);
 
+  }
+
+  
+
+  ngOnInit(): void {
+    this.totalVenta = 0;
+    this.arreglo = [];
+    this.tickets = [];
+    this.listaTickets = [];
+    this.listaSeleccionados = [];
+    this.datosCliente ={
+      cedula:"",
+      nombre:""
+    }
+
     var sql = "select * from tickets";
     this.zooService.llamadoHttp( "select", sql ).subscribe((data: any) => {    
       if(data.success == true){
@@ -57,13 +72,6 @@ export class VentaComponent implements OnInit {
         console.log("hubo false en webservice");
       }
     },(error:any) => { console.log(error); });
-
-  }
-
-  
-
-  ngOnInit(): void {
-
   }
 
 
@@ -131,6 +139,7 @@ export class VentaComponent implements OnInit {
     var ticket:any = this.encontrar(id,0);
     if (ticket != null) {
       ticket.estado =false;
+      ticket.cantidad = 1;
       this.listaSeleccionados.push(ticket);
     }
     else{
@@ -226,23 +235,34 @@ export class VentaComponent implements OnInit {
       var sqlDetalles:string[]=[];
 
       for (let registro of this.listaSeleccionados) {
-        valorTotal = valorTotal + (registro.precio * registro.cantidad);
+        if(registro.cantidad > 0){
+          valorTotal = valorTotal + (registro.precio * registro.cantidad);
 
-        sqlDetalles.push(
-          "INSERT INTO detallesFacturas ("+
-            "idFactura,"+
-            "idTicket,"+
-            "valor,"+
-            "cantidad,"+
-            "valorTotal"+
-          ") values ("+
-            "@idFactura,"+
-            registro.id + ","+
-            registro.precio + ","+
-            registro.cantidad + ","+
-            (registro.precio * registro.cantidad) +
-          ");"
-        );
+          sqlDetalles.push(
+            "INSERT INTO detallesFacturas ("+
+              "idFactura,"+
+              "idTicket,"+
+              "valor,"+
+              "cantidad,"+
+              "valorTotal"+
+            ") values ("+
+              "@idFactura,"+
+              registro.id + ","+
+              registro.precio + ","+
+              registro.cantidad + ","+
+              (registro.precio * registro.cantidad) +
+            ");"
+          );
+        }
+        else{
+          Swal.fire({
+            title: 'Error!',
+            text: 'No se pudo generar la factura. Todos los tickets agregados deben tener una cantidada mayor a 0',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+          });
+          return;
+        }
 
       }         
 
@@ -258,7 +278,7 @@ export class VentaComponent implements OnInit {
         this.datosCliente.cedula + ","+
         "'"+this.datosCliente.nombre + "',"+
         valorTotal + ","+
-        "CURDATE()"+
+        "NOW()"+
       ")";
 
 
@@ -346,6 +366,8 @@ export class VentaComponent implements OnInit {
                 html: infoEncabezadoHtml + detallesFacturasHtmml + infoPieHtml,
                 showCloseButton: true,
                 showConfirmButton: false
+              }).finally(() => {
+                this.ngOnInit();
               });
 
 
@@ -363,7 +385,5 @@ export class VentaComponent implements OnInit {
       }
     },(error:any) => { console.log(error); });
   }
-
-
 
 }

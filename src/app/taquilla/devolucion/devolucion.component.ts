@@ -81,8 +81,18 @@ export class DevolucionComponent implements OnInit {
 
 
   devolverVenta( id:number ){
+    // 2021-05-25 00:00:00
+    var pad = function(num:any) { return ('00'+num).slice(-2) };
+    let date = new Date();
+    let fecha = date.getUTCFullYear()    + '-' +
+            pad(date.getUTCMonth() + 1)  + '-' +
+            pad(date.getUTCDate())       + ' ' +
+            pad(date.getUTCHours())      + ':' +
+            pad(date.getUTCMinutes())    + ':' +
+            pad(date.getUTCSeconds());
+
     var tipo = "update";
-    var sql = "UPDATE facturas SET fechaDevolucion ="+ new Date() +"WHERE id = "+id;
+    var sql = "UPDATE facturas SET fechaDevolucion ='"+ fecha +"' WHERE numero = "+id;
 
     Swal.fire({
       title: 'Está seguro?',
