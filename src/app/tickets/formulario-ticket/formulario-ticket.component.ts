@@ -55,6 +55,7 @@ export class FormularioTicketComponent implements OnInit {
     }
    
   }
+
   public guardar(){
     console.log(this.listaHabitatsSeleccionados);
     var tipo = "avanzado";

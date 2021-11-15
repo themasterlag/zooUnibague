@@ -1,1 +1,48 @@
-<h1>En construccion 😁</h1>
+<div class="container-fluid">
+    <div class="col-12">
+        <h6 class="alert alert-info text-center"><i class="fas fa-store-slash"></i> Lista de ventas</h6>
+    </div>
+
+    <br>
+
+    <div class="row justify-content-center">
+        <div class="col-5">
+            <h6 class="alert alert-success text-center"><i class="fas fa-money-bill-wave"></i> Cantidad de ventas <strong>{{cantidadVentas}}</strong> </h6>
+        </div>
+        <div class="col-5">
+            <h6 class="alert alert-danger text-center"><i class="fas fa-dizzy"></i> cantidad de devoluciones <strong>{{cantidadDevoluciones}}</strong> </h6>
+        </div>
+    </div>
+
+    <br>
+
+    <div>
+        <table class="table table-striped table-inverse table-responsive">
+            <thead class="thead-inverse">
+                <tr class="text-center">
+                    <th>#</th>
+                    <th>Numero</th>
+                    <th>usuario</th>
+                    <th>Cedula cliente</th>
+                    <th>Valor</th>
+                    <th>Fecha vendido / devuelto</th>
+                    <th>Estado</th>
+                    <th>Accion</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-center" *ngFor="let factura of listaVentas;let i = index">
+                        <td class="align-middle" scope="row"> <strong>{{i+1}}</strong> </td>
+                        <td class="align-middle">{{factura.numero}}</td>
+                        <td class="align-middle">{{factura.usuarioEmpleado}}</td>
+                        <td class="align-middle">{{factura.cedulaCliente}}</td>
+                        <td class="align-middle">{{factura.valorTotal}}</td>
+                        <td class="align-middle">{{factura.fechaDevolucion != null?factura.fechaDevolucion: factura.fechaVenta}}</td>
+                        <td class="align-middle" *ngIf="factura.fechaDevolucion == null"><div class="align-middle alert alert-success text-center m-0">vendido</div></td>
+                        <td class="align-middle" *ngIf="factura.fechaDevolucion != null"><div class="align-middle alert alert-danger text-center m-0">Devuelto</div></td>
+                        <td class="align-middle"><button placement="top" ngbTooltip="Devolver venta" class="align-middle btn btn-danger" (click)="devolverVenta(factura.numero)"><i class="fas fa-minus"></i></button></td>
+                    </tr>
+                </tbody>
+        </table>
+    </div>
+</div>

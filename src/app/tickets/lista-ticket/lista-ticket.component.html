@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div>
-        <h5 class="alert alert-info text-center"><i class="fas fa-ticket-alt"></i> Crear ticket</h5>
+        <h5 class="alert alert-info text-center"><i class="fas fa-ticket-alt"></i> Lista de tickets</h5>
     </div>
 
     <div>
@@ -12,19 +12,26 @@
                     <th>valor</th>
                     <th>Tipo</th>
                     <th>Estado</th>
-                    <th></th>
-                    <th></th>
+                    <th>Accion</th>
                 </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let ticket of listaTickets;let i = index">
-                        <td scope="row">{{i+1}}</td>
+                        <td scope="row"> <strong>{{i+1}}</strong> </td>
                         <td>{{ticket.nombre}}</td>
                         <td>{{ticket.valor}}</td>
                         <td>{{ticket.tipo}}</td>
                         <td>{{ticket.estado}}</td>
-                        <td><button type="button" class="btn btn-primary" [routerLink]="['/crear-ticket', ticket.id]"><i class="fas fa-edit"></i></button></td>
-                        <td  class="align-middle"><button type="button" class="btn btn-danger" (click)="eliminar(ticket.id)"><i class="fas fa-minus"></i></button></td>
+                        <td class="align-middle" style="width: 10%;">
+                            <div class="row">   
+                                <div class="col-5">
+                                    <button placement="top" ngbTooltip="Editar" type="button" class="btn btn-primary" [routerLink]="['/crear-ticket', ticket.id]"><i class="fas fa-edit"></i></button>
+                                </div>
+                                <div class="col-5">
+                                    <button placement="top" ngbTooltip="Eliminar" type="button" class="btn btn-danger" (click)="eliminar(ticket.id)"><i class="fas fa-minus"></i></button>
+                                </div>                            
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
         </table>
