@@ -74,8 +74,6 @@ export class RegistrarPersonasComponent implements OnInit {
   insertarPersonas() {
     var tipo = "insert";
     var sql = "INSERT INTO persona(nombre,apellido,edad,fechaNacimiento,id,genero,telefono,usuario,pwd,email) VALUES('" + this.register.nombre + "','" + this.register.apellido + "'," + this.register.edad + ",'" + this.register.fechaDeNacimiento + "'," + this.register.cedula + ",'" + this.register.genero + "'," + this.register.telefono + ",'" + this.register.usuario + "','" + this.register.contrasena + "','" + this.register.email.toLowerCase() + "');";
-    var tipo2 = "select";
-    var sql2 = "select * from persona where id='" + this.register.cedula + "' and email='" + this.register.email + "';";
     if (this.register.nombre.includes("0") == true || this.register.nombre.includes("1") == true || this.register.nombre.includes("2") == true || this.register.nombre.includes("3") == true || this.register.nombre.includes("4") == true ||
       this.register.nombre.includes("4") == true || this.register.nombre.includes("5") == true || this.register.nombre.includes("7") == true || this.register.nombre.includes("8") == true || this.register.nombre.includes("9") == true) {
       Swal.fire({
@@ -91,7 +89,7 @@ export class RegistrarPersonasComponent implements OnInit {
       this.register.apellido.includes("4") == true || this.register.apellido.includes("5") == true || this.register.apellido.includes("6") == true || this.register.apellido.includes("7") == true || this.register.apellido.includes("8") == true || this.register.apellido.includes("9") == true) {
       Swal.fire({
         title: 'Error!',
-        text: "Debe ingresar nombre correcto",
+        text: "Debe ingresar apellido correcto",
         icon: 'warning',
         confirmButtonText: 'Ok',
         footer: 'Error de digitación'
