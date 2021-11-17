@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { RegistroService } from 'src/app/usuarios/registrar-personas/registro.service';
+import { ZooService } from 'src/app/zoo.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
@@ -22,7 +22,7 @@ export class RegistrarPersonasComponent {
   usuario: String;
   contrasena: String;
   email: String;
-  zooService: RegistroService;
+  zooService: ZooService;
 
 
   constructor(http: HttpClient, private router: Router) {
@@ -36,7 +36,7 @@ export class RegistrarPersonasComponent {
     this.usuario = "";
     this.contrasena = "";
     this.email = "";
-    this.zooService = new RegistroService(http);
+    this.zooService = new ZooService(http);
   }
 
   verificarPersonas()

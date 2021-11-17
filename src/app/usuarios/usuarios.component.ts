@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ServicioUsuariosService } from 'src/app/usuarios/servicio-usuarios.service';
+import { ZooService } from 'src/app/zoo.service';
 @Component({
   selector: 'app-usuarios',
   templateUrl: './usuarios.component.html',
@@ -8,7 +8,7 @@ import { ServicioUsuariosService } from 'src/app/usuarios/servicio-usuarios.serv
 })
 export class UsuariosComponent {
   title = 'zooUnibague';
-  zooService: ServicioUsuariosService;
+  zooService: ZooService;
   tipoUsuario: String;
   nombreUsuario: String;
   rol: String;
@@ -18,7 +18,7 @@ export class UsuariosComponent {
 
   constructor(http: HttpClient) {
 
-    this.zooService = new ServicioUsuariosService(http);
+    this.zooService = new ZooService(http);
     this.tipoUsuario = "";
     this.nombreUsuario = "";
     this.rol = "";
