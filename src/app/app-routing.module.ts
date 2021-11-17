@@ -12,6 +12,7 @@ import { ListarAnimalesComponent } from './animales/listar-animales/listar-anima
 import { RegistroAnimalesComponent } from './animales/registro-animales/registro-animales.component';
 import { EliminarAnimalesComponent } from './animales/eliminar-animales/eliminar-animales.component';
 import { BuscarAnimalesComponent } from './animales/buscar-animales/buscar-animales.component';
+import { ListarusuarioComponent } from './listarusuario/listarusuario.component';
 
 
 
@@ -28,7 +29,8 @@ const routes: Routes = [
   { path: 'buscar-animales', component: BuscarAnimalesComponent},
   { path: 'registrar-personas', component: RegistrarPersonasComponent},
   { path: 'crear-ticket/:id', component: FormularioTicketComponent},
-  { path: 'litar-ticket', component: ListaTicketComponent}
+  { path: 'litar-ticket', component: ListaTicketComponent},
+  { path: 'listar-usuario', component: ListarusuarioComponent}
 ];
 
 @NgModule({

@@ -25,19 +25,19 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                         </div>
-                        <input name="" class="form-control" placeholder="nombre" type="text" [(ngModel)]="nombre">
+                        <input name="" class="form-control" placeholder="nombre" type="text" [(ngModel)]="register.nombre">
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                         </div>
-                        <input name="" class="form-control" placeholder="apellido" type="text" [(ngModel)]="apellido">
+                        <input name="" class="form-control" placeholder="apellido" type="text" [(ngModel)]="register.apellido">
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fas fa-sort"></i></span>
                         </div>
-                        <input name="" class="form-control" placeholder="edad" type="number" [(ngModel)]="edad">
+                        <input name="" class="form-control" placeholder="edad" type="number" [(ngModel)]="register.edad">
                     </div>
                     <label>Fecha de nacimiento</label>
                     <div class="form-group input-group">
@@ -45,11 +45,11 @@
                             <span class="input-group-text"><i class="fas fa-birthday-cake"></i></span>
                         </div>
                         <input name="" class="form-control" placeholder="Día/Mes/Año" type="text"
-                            [(ngModel)]="fechaDeNacimiento">
+                            [(ngModel)]="register.fechaDeNacimiento">
                     </div>
                     <label>Género</label>
                     <div class="form-group input-group">
-                        <select id="inputState" class="form-select" [(ngModel)]="genero" ><i class="fas fa-venus-mars"></i>
+                        <select id="inputState" class="form-select" [(ngModel)]="register.genero" ><i class="fas fa-venus-mars"></i>
                             <option disabled selected>Elegir...</option>
                             <option>Femenino</option>
                             <option>Masculino</option>
@@ -61,33 +61,33 @@
                             <span class="input-group-text"><i class="fas fa-user-edit"></i></span>
                         </div>
                         <input name="" class="form-control" placeholder="nombre de usuario" type="text"
-                            [(ngModel)]="usuario">
+                            [(ngModel)]="register.usuario">
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-money-check"></i></span>
                         </div>
-                        <input name="" class="form-control" placeholder="identificación" type="number" [(ngModel)]="cedula">
+                        <input name="" class="form-control" placeholder="identificación" type="number" [(ngModel)]="register.cedula">
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
                         </div>
                         <input name="" class="form-control" placeholder="numero de telefono" type="number"
-                            [(ngModel)]="telefono">
+                            [(ngModel)]="register.telefono">
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                         </div>
                         <input name="" class="form-control" placeholder="correo electronico" type="text"
-                            [(ngModel)]="email">
+                            [(ngModel)]="register.email">
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-lock" ></i> </span>
                         </div>
-                        <input class="form-control" placeholder="Create password" type="password" [(ngModel)]="contrasena" id='pass'>
+                        <input class="form-control" placeholder="Create password" type="password" [(ngModel)]="register.contrasena" id='pass'>
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fas fa-eye-slash" (click)='ocultarContrasena()'></i> </span>
                         </div> 

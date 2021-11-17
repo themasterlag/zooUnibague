@@ -1,0 +1,33 @@
+<div class= "container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">N</th>
+          <th scope="col">tipoUsuario</th>
+          <th scope="col">nombreUsuario</th>
+          <th scope="col">rol</th>
+          <th scope="col">personaExclusiva</th>
+   
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let usuarios of listaUsuarios;let i = index">
+            <td scope="row"> <strong>{{i+1}}</strong> </td>
+            <td>{{usuarios.tipoUsuario}}</td>
+            <td>{{usuarios.nombreUsuario}}</td>
+            <td>{{usuarios.rol}}</td>
+            <td>{{usuarios.personaExclusiva}}</td>
+            <td class="align-middle" style="width: 10%;">
+              <div class="row">   
+                <div class="col-5">
+                  <button placement="top" ngbTooltip="Editar" type="button" class="btn btn-primary" [routerLink]="['/usuarios']"><i class="fas fa-edit"></i></button>
+              </div>
+                <div class="col-5">
+                    <button placement="top" ngbTooltip="Eliminar" type="button" class="btn btn-danger" (click)="eliminarUsuario(usuarios.nombreUsuario)"><i class="fas fa-minus"></i></button>
+                </div>                            
+            </div>
+            </td>
+        </tr>
+    </tbody>
+    </table>
+  </div>

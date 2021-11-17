@@ -93,6 +93,26 @@ export class UsuariosComponent {
       }
     );
   }
+  actualizarUsuario() {
 
+    var tipo = "update";
+    var sql = "UPDATE  usuarios set tipousuario= usuarios(tipoUsuario), WHERE tipoUsuario='" + this.nombreUsuario + "';";
+
+    this.zooService.llamadoHttp(tipo, sql).subscribe(
+      (data: any) => {
+        console.log(data);
+
+        if (data.success == true) {
+          console.log(data.mensaje[0]);
+        }
+        else {
+          console.log("hubo false en webservice");
+        }
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+  }
 
 }
