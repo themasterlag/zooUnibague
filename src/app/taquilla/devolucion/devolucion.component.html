@@ -40,7 +40,8 @@
                         <td class="align-middle">{{factura.fechaDevolucion != null?factura.fechaDevolucion: factura.fechaVenta}}</td>
                         <td class="align-middle" *ngIf="factura.fechaDevolucion == null"><div class="align-middle alert alert-success text-center m-0">vendido</div></td>
                         <td class="align-middle" *ngIf="factura.fechaDevolucion != null"><div class="align-middle alert alert-danger text-center m-0">Devuelto</div></td>
-                        <td class="align-middle"><button placement="top" ngbTooltip="Devolver venta" class="align-middle btn btn-danger" (click)="devolverVenta(factura.numero)"><i class="fas fa-minus"></i></button></td>
+                        <td *ngIf="factura.fechaDevolucion == null" class="align-middle"><button placement="top" ngbTooltip="Devolver venta" class="align-middle btn btn-danger" (click)="devolverVenta(factura.numero)"><i class="fas fa-minus"></i></button></td>
+                        <td *ngIf="factura.fechaDevolucion != null" class="align-middle"><button placement="top" ngbTooltip="Devolver venta" class="align-middle btn btn-secondary" disabled><i class="fas fa-minus"></i></button></td>
                     </tr>
                 </tbody>
         </table>
