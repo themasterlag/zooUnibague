@@ -356,8 +356,8 @@ export class VentaComponent implements OnInit {
               }     
 
               var infoPieHtml:string=
-              "<div class='row justify-content-end'><div class='col-3 text-start'><strong>TOTAL:</strong></div><div class='col-4 text-end'>$ " + encabezadoFactura.valorTotal +"</div></div>";
-      
+              "<div class='row justify-content-end'><div class='col-3 text-start'><strong>TOTAL:</strong></div><div class='col-4 text-end'>$ " + encabezadoFactura.valorTotal +"</div></div>"+
+              "<div class='row justify-content-center'> <button class='btn btn-primary' onclick='style.display = "+'"none"'+", window.print()'> Imprimir </button></div>";
        
               
               Swal.fire({
@@ -365,7 +365,8 @@ export class VentaComponent implements OnInit {
                 width: 600,
                 html: infoEncabezadoHtml + detallesFacturasHtmml + infoPieHtml,
                 showCloseButton: true,
-                showConfirmButton: false
+                showConfirmButton: false,
+                confirmButtonText: 'Imprimir'
               }).finally(() => {
                 this.ngOnInit();
               });
