@@ -149,7 +149,6 @@ export class FormularioTicketComponent implements OnInit {
           this.ticket.valor = data.mensaje[0].valor;
           this.ticket.tipo = data.mensaje[0].tipo;
 
-          console.log(this.ticket,"ti");
           this.consultarListaHabitatsSeleccionadas(id);
         }
         else{
@@ -181,11 +180,10 @@ export class FormularioTicketComponent implements OnInit {
           for (let i in data.mensaje) {
             this.listaHabitats.forEach(element => {
               if (data.mensaje[i].id == element.id) {
-                this.listaHabitatsSeleccionados.push(element);
+                this.seleccionarHabitat(element.id);
               }
             });
           }
-          console.log(this.listaHabitatsSeleccionados,"selec");
         }
         else{
           Swal.fire({
@@ -239,17 +237,42 @@ export class FormularioTicketComponent implements OnInit {
     );
   }
 
-  public estaSeleccionado(id:number){
+
+  estaSeleccionado(id:number){
     for (let i = 0; i < this.listaHabitatsSeleccionados.length; i++) {
-      console.log(id)
       const element = this.listaHabitatsSeleccionados[i];
       if(element.id == id){
-        console.log("====");
-        return true;
-        
+        return i;
       }
     }
-    return false;
+    return null;
+  }
+
+  encontrarHabitat(id:number){
+    for (let i = 0; i < this.listaHabitats.length; i++) {
+      const element = this.listaHabitats[i];
+      if(element.id == id){
+        return element;
+      }
+    }
+    return null;
+  }
+
+  public seleccionarHabitat(id:number){
+    console.log(id);
+    var habitat = this.encontrarHabitat(id);
+    if(habitat != null){
+      this.listaHabitatsSeleccionados.push(habitat);
+    }
+    console.log(this.listaHabitatsSeleccionados);
+  }
+
+  public deseleccionarHabitat(id:number){
+    console.log(id);
+    var i = this.estaSeleccionado(id);
+    if(i != null){
+      this.listaHabitatsSeleccionados.splice(i,1);
+    }
   }
 
 }

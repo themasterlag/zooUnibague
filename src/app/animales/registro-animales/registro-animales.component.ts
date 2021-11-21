@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { RegistroService } from 'src/app/usuarios/registrar-personas/registro.service';
+import { ZooService } from 'src/app/zoo.service';
 
 @Component({
   selector: 'app-registro-animales',
@@ -17,7 +17,7 @@ export class RegistroAnimalesComponent
   fechaNacimiento: String;
   fechaIngreso: String;
   descripcion: String;
-  zooService: RegistroService;
+  zooService: ZooService;
 
 
   constructor(http: HttpClient) 
@@ -28,7 +28,7 @@ export class RegistroAnimalesComponent
     this.fechaNacimiento = "";
     this.fechaIngreso = "";
     this.descripcion = "";
-    this.zooService = new RegistroService(http);
+    this.zooService = new ZooService(http);
   }
 
 
