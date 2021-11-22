@@ -10,7 +10,7 @@ interface Registro {
   nombre: String,
   apellido: String,
   edad: number,
-  fechaDeNacimiento: Date,
+  fechaDeNacimiento: String,
   genero: String,
   cedula: number,
   telefono: number,
@@ -34,7 +34,7 @@ export class RegistrarPersonasComponent implements OnInit {
       nombre: "",
       apellido: "",
       edad: 0,
-      fechaDeNacimiento: new Date(),
+      fechaDeNacimiento: "",
       cedula: 0,
       genero: "",
       telefono: 0,
@@ -54,7 +54,7 @@ export class RegistrarPersonasComponent implements OnInit {
   }
 
   verificarPersonas() {
-    if (this.register.nombre == "" || this.register.contrasena == "" || this.register.edad == 0 || this.register.fechaDeNacimiento.toString() == null || this.register.cedula == 0 || this.register.genero == "" || this.register.telefono == 0 || this.register.usuario == "" || this.register.contrasena == "" || this.register.email == "") {
+    if (this.register.nombre == "" || this.register.contrasena == "" || this.register.edad == 0 || this.register.fechaDeNacimiento == "" || this.register.cedula == 0 || this.register.genero == "" || this.register.telefono == 0 || this.register.usuario == "" || this.register.contrasena == "" || this.register.email == "") {
       return false;
     }
     return true;
@@ -72,7 +72,7 @@ export class RegistrarPersonasComponent implements OnInit {
 
   insertarPersonas() {
     var tipo = "insert";
-    var sql = "INSERT INTO persona(nombre,apellido,edad,fechaNacimiento,id,genero,telefono,usuario,pwd,email) VALUES('" + this.register.nombre + "','" + this.register.apellido + "'," + this.register.edad + ",'" + this.register.fechaDeNacimiento.toString() + "'," + this.register.cedula + ",'" + this.register.genero + "'," + this.register.telefono + ",'" + this.register.usuario + "','" + this.register.contrasena + "','" + this.register.email.toLowerCase() + "');";
+    var sql = "INSERT INTO persona(nombre,apellido,edad,fechaNacimiento,id,genero,telefono,usuario,pwd,email) VALUES('" + this.register.nombre + "','" + this.register.apellido + "'," + this.register.edad + ",'" + this.register.fechaDeNacimiento + "'," + this.register.cedula + ",'" + this.register.genero + "'," + this.register.telefono + ",'" + this.register.usuario + "','" + this.register.contrasena + "','" + this.register.email.toLowerCase() + "');";
     if (this.register.nombre.includes("0") == true || this.register.nombre.includes("1") == true || this.register.nombre.includes("2") == true || this.register.nombre.includes("3") == true || this.register.nombre.includes("4") == true ||
       this.register.nombre.includes("4") == true || this.register.nombre.includes("5") == true || this.register.nombre.includes("7") == true || this.register.nombre.includes("8") == true || this.register.nombre.includes("9") == true) {
       Swal.fire({
@@ -115,7 +115,7 @@ export class RegistrarPersonasComponent implements OnInit {
       });
       return;
     }
-    else if (this.register.nombre != "" && this.register.contrasena != "" && this.register.edad != 0 && this.register.fechaDeNacimiento.toString() != null && this.register.cedula != 0
+    else if (this.register.nombre != "" && this.register.contrasena != "" && this.register.edad != 0 && this.register.fechaDeNacimiento != "" && this.register.cedula != 0
       && this.register.genero != "" && this.register.telefono != 0 && this.register.usuario != "" && this.register.contrasena != "" && this.register.email != "") {
       this.zooService.llamadoHttp(tipo, sql).subscribe((data: any) => {
         if (data.success == true) 
