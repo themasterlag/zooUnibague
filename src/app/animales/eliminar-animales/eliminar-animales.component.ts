@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ZooService } from 'src/app/zoo.service';
 
 @Component({
   selector: 'app-eliminar-animales',
@@ -7,7 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EliminarAnimalesComponent implements OnInit {
 
-  constructor() { }
+  codigo: String;
+  nombre: String;
+  especie: String;
+  fechaNacimiento: String;
+  fechaIngreso: String;
+  zooService: ZooService;
+
+  constructor(http : HttpClient) { 
+    this.codigo = "";
+    this.nombre = "";
+    this.especie = "";
+    this.fechaNacimiento = "";
+    this.fechaIngreso = "";
+    this.zooService = new ZooService(http);
+  }
 
   ngOnInit(): void {
   }
