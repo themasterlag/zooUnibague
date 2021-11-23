@@ -26,6 +26,8 @@ import { FormularioTicketComponent } from './tickets/formulario-ticket/formulari
 import { ListaTicketComponent } from './tickets/lista-ticket/lista-ticket.component';
 import { BuscarAnimalesComponent } from './animales/buscar-animales/buscar-animales.component';
 import { ListarusuarioComponent } from './listarusuario/listarusuario.component';
+import { CrearHabitatComponent } from './habitats/crear-habitat/crear-habitat.component';
+import { ListaHabitatsComponent } from './habitats/lista-habitats/lista-habitats.component';
 
 
 @NgModule({
@@ -48,7 +50,9 @@ import { ListarusuarioComponent } from './listarusuario/listarusuario.component'
     FormularioTicketComponent,
     ListaTicketComponent,
     BuscarAnimalesComponent,
-    ListarusuarioComponent
+    ListarusuarioComponent,
+    CrearHabitatComponent,
+    ListaHabitatsComponent
   ],
   imports: [
     BrowserModule,

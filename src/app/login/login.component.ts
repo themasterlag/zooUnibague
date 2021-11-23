@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ServiciosService } from 'src/app/login/service/servicios.service';
+import { ZooService } from 'src/app/zoo.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 export class LoginComponent 
 {
   title = 'zooUnibague';
-  zooService: ServiciosService;
+  zooService: ZooService;
   contrasena: String;
   email: String;
 
@@ -22,7 +22,18 @@ export class LoginComponent
   {
     this.contrasena = "";
     this.email = "";
-    this.zooService = new ServiciosService(http);
+    this.zooService = new ZooService(http);
+
+    
+    if( localStorage.getItem("usuario") != null){
+      this.router.navigate(['/venta']);
+    }
+
+    this.zooService.validarMenu();
+  }
+  
+  ngOnInit() {
+    this.zooService.validarMenu();
   }
 
   mostrarContrasena()
@@ -63,6 +74,8 @@ export class LoginComponent
           var email = data.mensaje[0].email;
           if (contra == this.contrasena &&  email == this.email) 
           {
+            this.zooService.setUsuarioLogeado(data.mensaje[0].usuario);
+            localStorage.setItem('usuario', data.mensaje[0].usuario);
             Swal.fire({
               title: 'Éxito!',
               text: "Ha ingresado con éxito!",
@@ -73,6 +86,7 @@ export class LoginComponent
           }
           else 
           {
+            this.zooService.setUsuarioLogeado(null);
             Swal.fire({
               title: 'Error!',
               text: "Al parecer este usuario no está registrado o ingresó mal los datos!",

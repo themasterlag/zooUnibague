@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ZooService } from 'src/app/zoo.service';
 import { HttpClient } from '@angular/common/http';
 
@@ -11,6 +11,8 @@ export class AppComponent
 {
   title = 'zooUnibague';
 
+  verMenu = false;
+
   //se declara como atributo el servicio a usar para el llamado al webservice
   zooService:ZooService;
 
@@ -19,9 +21,17 @@ export class AppComponent
   constructor(http:HttpClient){
     //se crea un nuevo objeto de la clase zooService que llama al webservice
     this.zooService = new ZooService(http);
-
     //se llama al metodo de ejemplo de uso del webservice
     // this.llamadoEjemplo();
+  }
+
+  ngOnInit(){
+    this.zooService.validarMenu();
+    this.verMenu = this.zooService.getVerMenu();
+    setInterval(() => {
+      this.zooService.validarMenu();
+      this.verMenu = this.zooService.getVerMenu();
+    }, 100);
   }
 
   //metodo de ejemplo para usar webservice
