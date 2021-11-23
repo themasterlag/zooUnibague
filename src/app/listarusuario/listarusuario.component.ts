@@ -79,7 +79,7 @@ export class ListarusuarioComponent implements OnInit {
     }).then((result) => {
       if (result.value) {
         var tipo = "delete";
-        var sql = "DELETE FROM usuarios where nombreUsuario = " + nombreUsuario;
+        var sql = "DELETE FROM usuarios WHERE nombreUsuario = '" + nombreUsuario+"';";
         Swal.fire({
           title:'Eliminado!',
           html: '<i class="fas fa-spinner fa-pulse"></i>',

@@ -51,7 +51,7 @@ export class UsuariosComponent {
   eliminarUsuario() {
 
     var tipo = "delete";
-    var sql = "delete FROM usuarios WHERE  nombreUsuario = '" + this.nombreUsuario + "';";
+    var sql = "delete FROM usuarios WHERE nombreUsuario = '" + this.nombreUsuario + "';";
 
 
     this.zooService.llamadoHttp(tipo, sql).subscribe(
@@ -74,7 +74,7 @@ export class UsuariosComponent {
   buscarUsuario() {
 
     var tipo = "select";
-    var sql = "select * FROM vehiculo WHERE placa = '" + this.nombreUsuario + "';";
+    var sql = "select * FROM usuarios WHERE nombreUsuario = '" + this.nombreUsuario + "';";
 
 
     this.zooService.llamadoHttp(tipo, sql).subscribe(
