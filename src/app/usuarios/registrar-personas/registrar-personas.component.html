@@ -3,8 +3,8 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 <link rel="stylesheet" href="registrar-personas.component.css">
-<div style="background-image: url(https://wallpapercave.com/wp/wp4841321.jpg); background-size: 100%;">
-    <div class="container" >
+<div>
+    <div class="container">
         <br>
         <p class="text-center" style="color: white;">Bienvenidos a la página de registro</p>
         <hr>
@@ -12,44 +12,32 @@
             <article class="card-body mx-auto" style="max-width: 400px;">
                 <h4 class="card-title mt-3 text-center">Crear usuario</h4>
                 <p class="text-center">Inicia con tu cuenta gratis</p>
-                <p>
-                    <a class="btn btn-block btn-twitter" style="color: white;"> <i class="fab fa-twitter"></i>Login via Twitter</a>
-                    <a class="btn btn-block btn-facebook" style="color: white;"> <i class="fab fa-facebook-f"></i>   Login via
-                        facebook</a>
-                </p>
-                <p class="divider-text">
-                    <span class="bg-light">OR</span>
-                </p>
                 <form style="width: 20cm; transform: translateX(-5cm);">
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                         </div>
-                        <input name="" class="form-control" placeholder="nombre" type="text" [(ngModel)]="register.nombre">
+                        <input name="" class="form-control" placeholder="nombre" type="text" [(ngModel)]="register.nombre" autocomplete="off">
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                         </div>
-                        <input name="" class="form-control" placeholder="apellido" type="text" [(ngModel)]="register.apellido">
+                        <input name="" class="form-control" placeholder="apellido" type="text" [(ngModel)]="register.apellido" autocomplete="off">
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fas fa-sort"></i></span>
                         </div>
-                        <input name="" class="form-control" placeholder="edad" type="number" [(ngModel)]="register.edad">
+                        <input name="" class="form-control" placeholder="edad" type="number" [(ngModel)]="register.edad" autocomplete="off">
                     </div>
-                    <label>Fecha de nacimiento</label>
+                    <label>Fecha de nacimiento</label><label style="margin-left: 3cm;">Género</label>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-birthday-cake"></i></span>
                         </div>
-                        <input name="" class="form-control" placeholder="Día/Mes/Año" type="text"
-                            [(ngModel)]="register.fechaDeNacimiento">
-                    </div>
-                    <label>Género</label>
-                    <div class="form-group input-group">
-                        <select id="inputState" class="form-select" [(ngModel)]="register.genero" ><i class="fas fa-venus-mars"></i>
+                        <input name="" class="datepicker" type="date" [(ngModel)]="register.fechaDeNacimiento" autocomplete="off">
+                        <select id="inputState" class="form-select" [(ngModel)]="register.genero" style="margin-left:1cm"><i class="fas fa-venus-mars"></i>
                             <option disabled selected>Elegir...</option>
                             <option>Femenino</option>
                             <option>Masculino</option>
@@ -60,45 +48,42 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-user-edit"></i></span>
                         </div>
-                        <input name="" class="form-control" placeholder="nombre de usuario" type="text"
-                            [(ngModel)]="register.usuario">
+                        <input name="" class="form-control" placeholder="nombre de usuario" type="text" [(ngModel)]="register.usuario" autocomplete="off">
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-money-check"></i></span>
                         </div>
-                        <input name="" class="form-control" placeholder="identificación" type="number" [(ngModel)]="register.cedula">
+                        <input name="" class="form-control" placeholder="identificación" type="number" [(ngModel)]="register.cedula" autocomplete="off">
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
                         </div>
-                        <input name="" class="form-control" placeholder="numero de telefono" type="number"
-                            [(ngModel)]="register.telefono">
+                        <input name="" class="form-control" placeholder="numero de telefono" type="number" [(ngModel)]="register.telefono" autocomplete="off">
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                         </div>
-                        <input name="" class="form-control" placeholder="correo electronico" type="text"
-                            [(ngModel)]="register.email">
+                        <input name="" class="form-control" placeholder="correo electronico" type="text" [(ngModel)]="register.email" autocomplete="off">
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-lock" ></i> </span>
                         </div>
-                        <input class="form-control" placeholder="Create password" type="password" [(ngModel)]="register.contrasena" id='pass'>
+                        <input class="form-control" placeholder="Create password" type="password" [(ngModel)]="register.contrasena" id='pass' autocomplete="off">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fas fa-eye-slash" (click)='ocultarContrasena()'></i> </span>
-                        </div> 
+                        </div>
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fas fa-eye" (click)="mostrarContrasena()"  ></i> </span>
-                        </div> 
-                    </div>                    
+                        </div>
+                    </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-block" (click)="insertarPersonas()"> Crear cuenta </button>
                     </div>
-                    <p class="text-center">Ya tienes una cuenta? <a routerLink="/login">Log in</a> </p>
+                    <p class="text-center">Ya tienes una cuenta? <a href="/login">Log in</a> </p>
                 </form>
             </article>
         </div>
