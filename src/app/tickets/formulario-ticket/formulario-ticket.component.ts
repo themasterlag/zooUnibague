@@ -52,7 +52,7 @@ export class FormularioTicketComponent implements OnInit {
     this.consultarListaHabitats();
 
     var id = this.route.snapshot.paramMap.get('id');
-    if(id != null){
+    if(id != null && id != "null"){
       this.consultarTicket(id);
     }
    
