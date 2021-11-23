@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
     <div class="col-12">
         <h6 class="alert alert-info text-center"><i class="fas fa-store-slash"></i> Lista de ventas</h6>
     </div>
@@ -19,7 +19,7 @@
     <div>
         <table class="table table-striped table-inverse table-responsive">
             <thead class="thead-inverse">
-                <tr class="text-center">
+                <tr class="text-center bg-info rounded-3">
                     <th>#</th>
                     <th>Numero</th>
                     <th>usuario</th>
@@ -31,7 +31,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <tr class="text-center" *ngFor="let factura of listaVentas;let i = index">
+                    <tr class="text-center bg-white rounded-3" *ngFor="let factura of listaVentas;let i = index">
                         <td class="align-middle" scope="row"> <strong>{{i+1}}</strong> </td>
                         <td class="align-middle">{{factura.numero}}</td>
                         <td class="align-middle">{{factura.usuarioEmpleado}}</td>

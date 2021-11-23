@@ -69,38 +69,49 @@ export class ListaHabitatsComponent implements OnInit {
   }
 
   eliminarHabitat(id:number){
-    var tipo = "delete";
-    var sql = "DELETE FROM habitats WHERE id = " + id;
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "No podras revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, eliminar!'
+    }).then((result) => {
+      if (result.value) {
+        var tipo = "delete";
+        var sql = "DELETE FROM habitats WHERE id = " + id;
 
-    this.zooService.llamadoHttp(tipo, sql).subscribe(
-      (data:any) =>{
-        if(data.success == true){
-          Swal.fire({
-            title: 'Eliminado!',
-            text: 'Habitat eliminado correctamente!',
-            icon: 'success',
-            confirmButtonText: 'Ok'
-          });
-          this.consultarListaHabitats();
-        }
-        else{
-          Swal.fire({
-            title: 'Error!',
-            text: 'Hubo un error en el servidor!',
-            icon: 'error',
-            confirmButtonText: 'Ok'
-          });
-        }
-      },
-      (error:any) =>{
-        Swal.fire({
-          title: 'Error!',
-          text: error.message,
-          icon: 'error',
-          confirmButtonText: 'Ok'
-        });
+        this.zooService.llamadoHttp(tipo, sql).subscribe(
+          (data:any) =>{
+            if(data.success == true){
+              Swal.fire({
+                title: 'Eliminado!',
+                text: 'Habitat eliminado correctamente!',
+                icon: 'success',
+                confirmButtonText: 'Ok'
+              });
+              this.consultarListaHabitats();
+            }
+            else{
+              Swal.fire({
+                title: 'Error!',
+                text: 'Hubo un error en el servidor!',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+              });
+            }
+          },
+          (error:any) =>{
+            Swal.fire({
+              title: 'Error!',
+              text: error.message,
+              icon: 'error',
+              confirmButtonText: 'Ok'
+            });
+          }
+        );
       }
-    );
+    });
   }
-
 }
