@@ -31,17 +31,18 @@ export class ListaTicketComponent implements OnInit {
 
   listaTickets:Ticket[] = [];
 
-  listaHabitats:Habitat[] = [];
   nombreUsuario: String;
 
   constructor(http:HttpClient, private route: ActivatedRoute, private router: Router){
     this.zooService = new ZooService(http);
+    if( localStorage.getItem("usuario") == null){
+      this.router.navigate(['/login']);
+    }
     this.nombreUsuario = "";
   }
 
   ngOnInit(): void {
     this.consultarListaTickets();
-    this.consultarListaHabitats();
   }
  
   public consultarListaTickets(){
@@ -77,39 +78,6 @@ export class ListaTicketComponent implements OnInit {
     );
   }
 
-
-  private consultarListaHabitats(){
-    var tipo = "select";
-    var sql = "SELECT * FROM habitats";
-
-    this.listaHabitats = [];
-
-    this.zooService.llamadoHttp(tipo, sql).subscribe(
-      (data:any) =>{
-        if(data.success == true){
-          for (let i in data.mensaje) {
-            this.listaHabitats.push(data.mensaje[i]);
-          }
-        }
-        else{
-          Swal.fire({
-            title: 'Error!',
-            text: 'Hubo un error en el servidor!',
-            icon: 'error',
-            confirmButtonText: 'Ok'
-          });
-        }
-      },
-      (error:any) =>{
-        Swal.fire({
-          title: 'Error!',
-          text: error.message,
-          icon: 'error',
-          confirmButtonText: 'Ok'
-        });
-      }
-    );
-  }
 
   public eliminar(id:number){
     var tipo = "delete";

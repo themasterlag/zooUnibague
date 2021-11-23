@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ZooService } from 'src/app/zoo.service';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 interface Ticket{
@@ -43,7 +43,9 @@ export class FormularioTicketComponent implements OnInit {
 
   constructor(http:HttpClient, private route: ActivatedRoute, private router: Router){
     this.zooService = new ZooService(http);
-    
+    if( localStorage.getItem("usuario") == null){
+      this.router.navigate(['/login']);
+    }
   }
 
   ngOnInit(): void {
@@ -57,10 +59,21 @@ export class FormularioTicketComponent implements OnInit {
   }
 
   public guardar(){
+    if(this.listaHabitatsSeleccionados.length < 1){
+      Swal.fire({
+        title: 'Error!',
+        text: 'Debe seleccionar al menos un habitat!',
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      });
+      return;
+    }
     console.log(this.listaHabitatsSeleccionados);
     var tipo = "avanzado";
     var sql = "INSERT INTO tickets (nombre, valor, tipo) VALUES ('"+ this.ticket.nombre +"',"+ this.ticket.valor + ",'" +this.ticket.tipo+"'); ";
-    this.zooService.llamadoHttp(tipo, sql).subscribe(
+    var sql2 = "UPDATE tickets SET nombre = '"+ this.ticket.nombre +"', valor = '"+ this.ticket.valor +"', tipo = '"+ this.ticket.tipo +"'WHERE id = " + this.ticket.id + "; ";
+    
+    this.zooService.llamadoHttp(tipo, this.ticket.id != 0? sql2: sql).subscribe(
       (data:any) =>{
         if(data.success == true){
           this.zooService.llamadoHttp("select","SELECT MAX(id) as id FROM tickets;").subscribe(

@@ -1,1 +1,29 @@
-<p>crear-habitat works!</p>
+<div class="container-fluid">
+    <div>
+        <h5 class="alert alert-info text-center"><i class="fas fa-ticket-alt"></i> Crear habitat</h5>
+    </div>
+
+    <div class="row">
+        <div class="col-1"></div>
+
+        <div class="col-10">
+            <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-control" [(ngModel)]="habitat.nombre">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Cantidad maxima de animales</label>
+                <input type="number" class="form-control" [(ngModel)]="habitat.cantidadMaxanimales">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Seleccione el tipo de habitat</label> <br>
+                <select class="form-control" [(ngModel)]="habitat.tipo">
+                    <option value = "0" selected>Seleccione una opcion</option>
+                    <option *ngFor="let tipo of listaTipos" value="{{tipo.id}}">{{tipo.nombre}}</option>
+                </select>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary" (click)="guardar()"><i class="far fa-save"></i> Guardar</button>
+
+        </div>
+</div>

@@ -32,6 +32,9 @@ export class DevolucionComponent implements OnInit {
 
   constructor(http:HttpClient, private route: ActivatedRoute, private router: Router){
     this.zooService = new ZooService(http);
+    if( localStorage.getItem("usuario") == null){
+      this.router.navigate(['/login']);
+    }
   }
 
   ngOnInit(): void {

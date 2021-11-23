@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent 
+export class AppComponent implements OnInit 
 {
   title = 'zooUnibague';
 
@@ -26,12 +26,11 @@ export class AppComponent
   }
 
   ngOnInit(){
-    this.zooService.validarMenu();
-    this.verMenu = this.zooService.getVerMenu();
+    this.verMenu = this.zooService.validarMenu();
     setInterval(() => {
       this.zooService.validarMenu();
-      this.verMenu = this.zooService.getVerMenu();
-    }, 100);
+      this.verMenu = this.zooService.validarMenu();
+    }, 1000);
   }
 
   //metodo de ejemplo para usar webservice

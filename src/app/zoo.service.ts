@@ -45,9 +45,6 @@ export class ZooService
     else{
       this.verMenu = false;
     }
-  }
-
-  getVerMenu(){
     return this.verMenu;
   }
 }

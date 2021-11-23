@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { ZooService } from 'src/app/zoo.service';
 import { HttpClient } from '@angular/common/http';
-import { right } from '@popperjs/core';
+import { Router } from '@angular/router';
 
 interface cards {
   id: number;
@@ -42,8 +42,12 @@ export class VentaComponent implements OnInit {
   totalVenta:any=0;
 
   
-  constructor(http:HttpClient) {
+  constructor(http:HttpClient, private router: Router) {
     this.zooService = new ZooService(http);
+
+    if( localStorage.getItem("usuario") == null){
+      this.router.navigate(['/login']);
+    }
 
   }
 

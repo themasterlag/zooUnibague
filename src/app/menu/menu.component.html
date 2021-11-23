@@ -40,8 +40,15 @@
                     </ul>
                 </li>
     
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Habitats</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-igloo"></i> Habitats
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="/crear-habitat/null"><i class="fas fa-clinic-medical"></i> Crear</a></li>
+                        <li><a class="dropdown-item" routerLink="/listar-habitats"><i class="fas fa-clipboard-list"></i> Listar</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/usuarios"> <i class="fas fa-users"></i> Usuarios</a>
@@ -61,7 +68,7 @@
             </ul>
         </div>
         <div class="nav-item justify-content-end">
-            <a class="nav-link pull-left link-danger" (click)="cerrarSesion()" ><i class="fas fa-sign-in-alt"></i> Cerrar Sesion </a>
+            <button class="btn btn-outline-danger" (click)="cerrarSesion()" ><i class="fas fa-sign-in-alt"></i> Cerrar Sesion </button>
         </div>
     </div>
 </nav>
