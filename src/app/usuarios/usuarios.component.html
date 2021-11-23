@@ -12,17 +12,17 @@
                 </div>
                 <div class="col-md">
                     <label for="inputAddress" class="form-label">Tipo de usuario</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="" style="width : 50%" [(ngModel)]="tipoUsuario">
+                    <input type="text" class="form-control" id="inputAddress" placeholder="" style="width : 50%" [(ngModel)]="tipoUsuario" autocomplete="off" required>
                 </div>
                 <br>
                 <div class="col-md">
                     <label for="inputAddress" class="form-label">Nombre de usuario</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="" style="width : 50%" [(ngModel)]="nombreUsuario">
+                    <input type="text" class="form-control" id="inputAddress" placeholder="" style="width : 50%" [(ngModel)]="nombreUsuario" autocomplete="off" required>
                 </div>
                 <br>
                 <div class="col-md">
                     <label for="inputAddress" class="form-label">Persona exclusiva</label>
-                    <select id="inputState" class="form-select" style="width : 50%" [(ngModel)]="personaExclusiva">
+                    <select id="inputState" class="form-select" style="width : 50%" [(ngModel)]="personaExclusiva" autocomplete="off" required>
                             <option selected disabled>Elegir...</option>
                             <option>Si</option>
                             <option>No</option>
@@ -31,7 +31,7 @@
                 <br>
                 <div class="col-md">
                     <label for="inputState" class="form-label">Rol</label>
-                    <select id="inputState" class="form-select" style="width : 50%" [(ngModel)]="rol">
+                    <select id="inputState" class="form-select" style="width : 50%" [(ngModel)]="rol" autocomplete="off" required>
                             <option selected>Elegir...</option>
                             <option>Visitante</option>
                             <option>Veterinario</option>
