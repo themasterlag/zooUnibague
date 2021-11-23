@@ -22,9 +22,9 @@
                 <div class="col-5">
                   <button placement="top" ngbTooltip="Editar" type="button" class="btn btn-primary" [routerLink]="['/usuarios']"><i class="fas fa-edit"></i></button>
               </div>
-                <div class="col-5">
-                    <button placement="top" ngbTooltip="Eliminar" type="button" class="btn btn-danger" (click)="eliminarUsuario(usuarios.nombreUsuario)"><i class="fas fa-minus"></i></button>
-                </div>                            
+              <div class="col-5">
+                <button placement="top" ngbTooltip="Eliminar" type="button" class="btn btn-danger" (click)="eliminar(usuarios.nombreUsuario)"><i class="fas fa-minus"></i></button>
+            </div>                             
             </div>
             </td>
         </tr>

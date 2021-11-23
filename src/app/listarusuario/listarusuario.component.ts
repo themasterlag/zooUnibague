@@ -67,26 +67,55 @@ export class ListarusuarioComponent implements OnInit {
     );
   }
 
-  eliminarUsuario(nombreUsuario:String) {
-
-    var tipo = "delete";
-    var sql = "delete FROM usuarios WHERE  nombreUsuario = '" + nombreUsuario;
-
-
-    this.zooService.llamadoHttp(tipo, sql).subscribe(
-      (data: any) => {
-        console.log(data);
-
-        if (data.success == true) {
-          console.log(data.mensaje[0]);
-        }
-        else {
-          console.log("hubo false en webservice");
-        }
-      },
-      (error: any) => {
-        console.log(error);
+  public eliminar(nombreUsuario:String){
+    Swal.fire({
+      title: '¿Está seguro?',
+      text: "¡No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '¡Sí, eliminar!'
+    }).then((result) => {
+      if (result.value) {
+        var tipo = "delete";
+        var sql = "DELETE FROM usuarios where nombreUsuario = " + nombreUsuario;
+        Swal.fire({
+          title:'Eliminado!',
+          html: '<i class="fas fa-spinner fa-pulse"></i>',
+          icon: 'info',
+          confirmButtonText: 'Ok'
+        });
+        this.zooService.llamadoHttp(tipo, sql).subscribe(
+          (data:any) =>{
+            if(data.success == true){
+              this.consultarListaUsuarios();
+              Swal.fire({
+                title:'Eliminado!',
+                text: 'Se elimino correctamente',
+                icon: 'success',
+                confirmButtonText: 'Ok'
+              });
+            }
+            else{
+              Swal.fire({
+                title: 'Error!',
+                text: data.message[0],
+                icon: 'error',
+                confirmButtonText: 'Ok'
+              });
+            }
+          },
+          (error:any) =>{
+            Swal.fire({
+              title: 'Error!',
+              text: error.message,
+              icon: 'error',
+              confirmButtonText: 'Ok'
+            });
+          }
+        );
       }
-    );
+    });
   }
 }
