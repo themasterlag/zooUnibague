@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ZooService } from 'src/app/zoo.service';
 
 @Component({
   selector: 'app-animales',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnimalesComponent implements OnInit {
 
-  constructor() { }
+
+  constructor() { 
+  }
 
   ngOnInit(): void {
   }
+
+
+
 
 }

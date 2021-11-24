@@ -8,32 +8,32 @@ box-shadow: 2px 2px 84px 12px rgba(0,0,0,0.56);">
         </div>
     </div>
     <ul class="text-center">
+        <select class="form-control" [(ngModel)]="habitatSeleccionado">
+            <option value = "0" selected>Seleccione una opcion</option>
+            <option *ngFor="let habitat of listaHabitats" value="{{habitat.id}}">{{habitat.nombre}}</option>
+        </select>
         <li>
-            <label for="codigo">Codigo:</label>
-            <input type="texto" id="codigo" name="animal_codigo" [(ngModel)]="codigo">
+            <label for="nombre">nombre:</label>
+            <input type="text" id="nombre" name="animal_nombre" [(ngModel)]="nombre">
         </li>
         <li>
-            <label for="nombre">Nombre:</label>
-            <input type="texto" id="nombre" name="animal_nombre" [(ngModel)]="nombre">
+            <label for="especie">especie:</label>
+            <input type="text" id="especie" name="animal_especie" [(ngModel)]="especie">
         </li>
         <li>
-            <label for="especie">Especie:</label>
-            <input type="texto" id="especie" name="animal_especie" [(ngModel)]="especie">
+            <label for="fechaNacimiento">fechaNacimiento:</label>
+            <input type="text" id="fechaNacimiento" name="animal_edad" [(ngModel)]="fechaNacimiento">
         </li>
         <li>
-            <label for="fechaNacimiento">FechaNacimiento:</label>
-            <input type="texto" id="fechaNacimiento" name="animal_edad" [(ngModel)]="fechaNacimiento">
+            <label for="fechaIngreso">fechaIngreso:</label>
+            <input type="text" id="fechaIngreso" name="animal_ingreso" [(ngModel)]="fechaIngreso">
         </li>
         <li>
-            <label for="fechaIngreso">FechaIngreso:</label>
-            <input type="texto" id="fechaIngreso" name="animal_ingreso" [(ngModel)]="fechaIngreso">
-        </li>
-        <li>
-            <label for="msg">Descripcion:</label>
+            <label for="msg">descripcion:</label>
             <textarea id="descripcion" name="animal_descripcion" [(ngModel)]="descripcion"></textarea>
         </li>
         <li>
-            <button type="submit" class="btn btn-success" (click)="insertarAnimales()"><i class="far fa-save"></i> Registrar</button>
+            <button type="submit" class="btn btn-success" (click)="insertarAnimales()"><i class="far fa-save"></i>Registrar</button>
         </li>
 
     </ul>
@@ -103,5 +103,55 @@ box-shadow: 2px 2px 84px 12px rgba(0,0,0,0.56);">
         }
     </style>
 </form>
-
 </html>
+
+
+<!--<html>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card border-secondary mb-3 mt-5" style="-webkit-box-shadow: 2px 2px 84px 12px rgba(0,0,0,0.56);
+            -moz-box-shadow: 2px 2px 84px 12px rgba(0,0,0,0.56);
+            box-shadow: 2px 2px 84px 12px rgba(0,0,0,0.56);">
+                <div class="card-header alert alert- text-center">
+                    <font size=6>Registrar un animal</font>
+                </div>
+                <div class="col-md">
+                    <label for="inputAddress" class="form-label">Codigo</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="" style="width : 50%" [(ngModel)]="codigo" autocomplete="off" required>
+                </div>
+                <br>
+                <div class="col-md">
+                    <label for="inputAddress" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="" style="width : 50%" [(ngModel)]="nombre" autocomplete="off" required>
+                </div>
+                <div class="col-md">
+                    <label for="inputAddress" class="form-label">Especie</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="" style="width : 50%" [(ngModel)]="especie" autocomplete="off" required>
+                </div>
+                <br>
+                <div class="col-md">
+                    <label for="inputAddress" class="form-label">Fecha de Nacimiento</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="" style="width : 50%" [(ngModel)]="fechaNacimiento" autocomplete="off" required>
+                </div>
+                <div class="col-md">
+                    <label for="inputAddress" class="form-label">Fecha de Ingreso</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="" style="width : 50%" [(ngModel)]="fechaIngreso" autocomplete="off" required>
+                </div>
+                <br>
+                <div class="col-md">
+                    <label for="inputAddress" class="form-label">Descripcion</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="" style="width : 50%" [(ngModel)]="descripcion" autocomplete="off" required>
+                </div>
+                <div class="move-2">
+
+
+                    <fieldset class="row mb-3">
+
+                        <div class="col-12"><br>
+                            <button type="submit" class="btn btn-dark" style="margin-left: 290px" (click)="insertarAnimales()">Agregar</button>
+                        </div>
+                    </fieldset>
+                </div>-->
+                
+                
