@@ -43,7 +43,7 @@ export class DevolucionComponent implements OnInit {
  
   public consultarVentas(){
     var tipo = "select";
-    var sql = "SELECT * FROM facturas";
+    var sql = "SELECT numero, (select nombreUsuario from usuarios where id = usuarioEmpleado) as usuarioEmpleado, cedulaCliente, nombreCliente, valorTotal, fechaVenta, fechaDevolucion, nota FROM facturas";
 
     this.cantidadVentas = 0;
     this.cantidadDevoluciones = 0;
