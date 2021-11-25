@@ -38,6 +38,10 @@ export class UsuariosComponent {
 
         if (data.success == true) {
           console.log(data.mensaje[0]);
+          this.tipoUsuario ="";
+          this.nombreUsuario = "";
+          this.rol="";
+          this.personaExclusiva="";
         }
         else {
           console.log("hubo false en webservice");
